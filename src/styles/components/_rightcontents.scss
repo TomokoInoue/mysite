@@ -1,0 +1,88 @@
+// -----------------------------------------------
+// Right Contents
+// -----------------------------------------------
+
+.right {
+  margin: 14.25rem 0 0 auto;
+  &__box {
+    display: flex;
+  }
+  &__ttl {
+    margin: -0.6rem 4.94rem 0 0;
+    font-size: 2.85rem;
+    font-weight: 300;
+    span {
+      display: inline-block;
+      vertical-align: bottom;
+      padding-left: 0.5rem;
+      font-size: 3.25rem;
+      font-family: 'Satoshi Variable';
+      font-weight: 100;
+    }
+    small {
+      padding-left: 0.38rem;
+      font-size: 1.5rem;
+    }
+  }
+  &__wrap {
+    max-width: 37.18rem;
+  }
+  h2 {
+    margin-bottom: 4rem;
+    padding-top: 2.5rem;
+    font-size: 1.5rem;
+    font-weight: 250;
+    line-height: 2.5rem; /* 166.667% */
+    letter-spacing: 0.03rem;
+    background-image: url(../assets/common/border.svg);
+    background-repeat: repeat-x;
+    background-position: left top;
+    background-size: auto;
+  }
+  &__txt {
+    margin-bottom: 2.2rem;
+    font-size: clamp(0.875rem, 0.732rem + 0.3vw, 1rem);
+    line-height: 2.2rem; /* 228.571% */
+    letter-spacing: 0.0175rem;
+  }
+  &__btn {
+    display: block;
+    margin: 0 0 12.5rem auto;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 2.6rem;
+    background-color: #e0ded7;
+  }
+}
+
+// 1024pxのマージン
+@include tablet {
+  .right {
+    max-width: calc(100% - 30.06rem);
+  }
+}
+
+// 1366pxのマージン
+@include x {
+  .right {
+    &__box {
+      display: inline;
+    }
+    &__ttl {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+// 1600pxのマージン
+@include xll {
+  .right {
+    margin: 14.25rem calc(100% / 19) 0 auto;
+    &__box {
+      margin: 0 auto;
+    }
+    &__wrap {
+      max-width: 47rem;
+    }
+  }
+}

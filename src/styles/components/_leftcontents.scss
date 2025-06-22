@@ -1,0 +1,44 @@
+// -----------------------------------------------
+// Left Contents
+// -----------------------------------------------
+
+.left {
+  position: fixed;
+  left: 2.45rem;
+  bottom: 1.93rem;
+  margin-right: 5.5rem;
+  &__photo {
+    display: block;
+    width: 18.56rem;
+    height: auto;
+    margin-bottom: 3.2rem;
+  }
+  &__phrase {
+    width: 22.31rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $black;
+  }
+  &__phrase-txt {
+    font-size: 0.875rem;
+    letter-spacing: 0.0175rem;
+    span {
+      padding-left: 0.63rem;
+      letter-spacing: 0.05rem;
+    }
+  }
+}
+
+// 1600pxのマージン
+@include xll {
+  .left {
+    &__photo {
+      width: 20vw;
+    }
+    &__phrase {
+      width: 22rem;
+    }
+    &__phrase-txt {
+      font-size: clamp(0.875rem, 0.732rem + 0.3vw, 1rem);
+    }
+  }
+}

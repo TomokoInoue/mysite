@@ -1,0 +1,17 @@
+// -----------------------------------------------
+// load all scss
+// -----------------------------------------------
+
+@charset 'UTF-8';
+@import 'abstracts/_variables';
+
+//base
+@import 'base/_reset';
+@import 'base/_base';
+@import 'base/home';
+
+// components
+@import 'components/header';
+@import 'components/menuAbout';
+@import 'components/leftcontents';
+@import 'components/rightcontents';

@@ -1,0 +1,32 @@
+---
+import MenuAbout from "./MenuAbout.astro";
+import MenuWork from "./MenuWork.astro";
+---
+
+<header class="header">
+	<h1>Tomoko Inoue<span>（人生珍道中ブログ）</span></h1>
+	<div class="header__right">
+		<div class="lang">
+			<div class="lang__select">
+				<p class="lang__time">08<span>&#58;</span>20</p>
+				<p class="lang__temp">12°C</p>
+				<p class="lang__tempIcon emoji">&#x2614;</p>
+				<button class="lang__flag emoji">&#x1f1ef;&#x1f1f5;<i></i></button>
+			</div>
+			<aside class="lang__menu">
+				<ul>
+					<li class="lang__jp"><button>TOKYO<span>&#127471;&#127477;</span></button></li>
+					<li class="lang__en"><button>LONDON<span>	&#x1f1ec;&#x1f1e7;</span></button></li>
+				</ul>
+			</aside>
+		</div>
+		<nav class="nav">
+			<ul>
+				<li class="nav__about"><a href="/">私について</a></li>
+				<li class="nav__work"><a href="/about/">つくったもの</a></li>
+			</ul>
+		</nav>
+	</div>
+	<MenuAbout />
+	<MenuWork />
+</header>

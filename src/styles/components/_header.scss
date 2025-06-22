@@ -1,0 +1,93 @@
+// -----------------------------------------------
+// header
+// -----------------------------------------------
+
+.header {
+  display: flex;
+  align-items: center;
+  margin: 1.88rem 2.25rem 0;
+  &__right {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 2.06rem;
+    right: 2.25rem;
+  }
+  h1 {
+    font-size: 1.375rem;
+    font-family: $gothic;
+    font-weight: 400;
+    letter-spacing: 0.05rem;
+    span {
+      display: block;
+      margin-left: -0.8rem;
+      font-size: 1.25rem;
+      font-weight: 400;
+      font-family: $gothic;
+    }
+  }
+  .lang {
+    display: flex;
+    &__select {
+      display: flex;
+      position: relative;
+      align-items: center;
+      margin-right: 2.5rem;
+      padding: 0.22rem 1.69rem 0.2rem 1.12rem;
+      border-radius: 3.5rem;
+      background: rgba(222, 220, 215, 0.5);
+      backdrop-filter: blur(5px);
+      p {
+        font-size: 0.8rem;
+        font-family: $gothic;
+        font-weight: 400;
+        letter-spacing: 0.0375rem;
+      }
+    }
+    &__time {
+      margin-right: 0.88rem;
+    }
+    &__temp {
+      margin-right: 0.5rem;
+    }
+    &__flag {
+      margin-left: 1.62rem;
+      i {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 0.69rem;
+        width: 10px;
+        height: 6px;
+        background-image: url(../assets/common/icon_arrow.svg);
+        background-size: contain;
+      }
+    }
+    &__flag::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 54%;
+      right: 3.9rem;
+      width: 1px;
+      height: 16px;
+      background-color: rgba($color: #28282a, $alpha: 0.2);
+      transform: translate(-50%, -50%);
+    }
+    &__menu {
+      display: none;
+    }
+  }
+  .nav {
+    ul {
+      display: flex;
+      font-size: 0.875rem;
+    }
+    li {
+      margin-right: 2rem;
+    }
+    li:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,140 @@
+// -----------------------------------------------
+// base
+// -----------------------------------------------
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  @media screen and (min-width: 1441px) {
+    font-size: 100%;
+  }
+  @media screen and (max-width: 1440px) {
+    font-size: clamp(0.875rem, 0.732rem + 0.3vw, 1rem);
+  }
+  @include sp {
+    font-size: 100%;
+  }
+}
+body {
+  background-color: $lightgray;
+  color: $black;
+  font-family: $gothic;
+  font-optical-sizing: auto;
+  // font-feature-settings: 'palt';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+}
+
+i {
+  font-style: normal;
+}
+
+img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+}
+// utilitary classes
+.pc {
+  @include sp {
+    display: none;
+  }
+}
+.sp {
+  @include pc {
+    display: none;
+  }
+}
+picture.cover {
+  display: block;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.emoji {
+  font-size: 1.25rem !important;
+}
+// 一時的にコメントアウト
+// .scroll-container {
+//   position: relative;
+//   @include sp {
+//     overflow-y: scroll;
+//     .sp-40 {
+//       width: 40rem;
+//       // display: block;
+//     }
+//     &::after {
+//       content: '';
+//       width: 10rem;
+//       height: 6.4rem;
+//       background-image: url('/humancapital/assets/images/common/horizontal-scroll.png');
+//       background-size: contain;
+//       position: absolute;
+//       z-index: 1;
+//       left: 50%;
+//       transform: translateX(-50%);
+//       top: 5.6rem;
+//       pointer-events: none;
+//       transition: opacity 0.2s ease-in-out;
+//     }
+//   }
+//   &.touched::after {
+//     opacity: 0;
+//   }
+// }
+.pre-line {
+  white-space: pre-line;
+}
+// .category-bg.category1 {
+//   background-color: $category1;
+// }
+// .category-bg.category2 {
+//   background-color: $category2;
+// }
+// .category-color.category1 {
+//   color: $category1;
+// }
+// .category-color.category2 {
+//   color: $category2;
+// }
+
+.fadeIn {
+  opacity: 0;
+  transition: opacity 1.5s ease-out;
+  &.viewed {
+    opacity: 1;
+  }
+}
+
+.hover-listItem-underline {
+  a,
+  span {
+    position: relative;
+    @include pc {
+      &::after {
+        content: '';
+        left: 0;
+        bottom: -0.2rem;
+        width: 100%;
+        height: 1px;
+        background-color: $black;
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      }
+      &:hover {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+---
+const homeUrl = import.meta.env.BASE_URL
+---
+
+<div class="menu">
+ <div class="menu__inner">
+  <ul class="filter">
+   <li><a href="#">勉強</a></li>
+   <li><a href="#"></a>グラフィックデザイン</li>
+   <li><a href="#"></a>実装</li>
+   <li><a href="#"></a>物撮り撮影</li>
+   <li><a href="#"></a>UI/UX</li>
+   <li><a href="#"></a>イラスト</li>
+  </ul>
+  <div class="work__wrap">
+   <article class="work__box">
+    <a href="work/work01">
+     <div class="work__btn">
+      <span class="work__btn-eye">&#x1f440;</span>
+      <span class="work__btn-nose">&#x1f443;</span>
+      <span class="work__btn-mouth">&#x1f444;</span>
+     </div>
+     <img src={`${homeUrl}assets/work/work1_img01.jpg`} alt="猫のデッサン" width="368" height="276">
+     <ul class="tag">
+      <li>勉強</li>
+      <li>イラスト</li>
+     </ul>
+     <p class="work__ttl">猫のデッサン</p>
+    </a>
+   </article>
+   <article class="work__box">
+    <a href="work/work01">
+     <div class="work__btn">
+      <span class="work__btn-eye">&#x1f440;</span>
+      <span class="work__btn-nose">&#x1f443;</span>
+      <span class="work__btn-mouth">&#x1f444;</span>
+     </div>
+     <img src={`${homeUrl}assets/work/work1_img02.jpg`} alt="文字のアニメーション" width="368" height="276">
+     <ul class="tag">
+      <li>勉強</li>
+      <li>実装</li>
+     </ul>
+     <p class="work__ttl">文字のアニメーション</p>
+    </a>
+   </article>
+   <article class="work__box">
+    <a href="work/work01">
+     <div class="work__btn">
+      <span class="work__btn-eye">&#x1f440;</span>
+      <span class="work__btn-nose">&#x1f443;</span>
+      <span class="work__btn-mouth">&#x1f444;</span>
+     </div>
+     <img src={`${homeUrl}assets/work/work1_img03.jpg`} alt="文字のアニメーション" width="368" height="276">
+     <ul class="tag">
+      <li>勉強</li>
+      <li>物撮り撮影</li>
+     </ul>
+     <p class="work__ttl">テーブルフォト</p>
+    </a>
+   </article>
+  </div>
+ </div>
+</div>

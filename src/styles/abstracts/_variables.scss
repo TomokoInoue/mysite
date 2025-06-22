@@ -1,0 +1,63 @@
+// -----------------------------------------------
+// variable settings
+// -----------------------------------------------
+
+@use 'sass:math';
+// colors
+$lightgray: #eceae4;
+$white: #ffffff;
+$black: #28282a;
+$text: #28282a;
+
+//eases
+$ease-back: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+$ease-custom1: cubic-bezier(0.23, 1, 0.32, 1);
+$ease-custom2: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+// fonts family
+$gothic:
+  'Satoshi Variable', 'FP-KoburinaGoStdN-W3', 'FOTKYoonGothicPro730', sans-serif;
+
+// responsive breakpoints
+$xll: 1600px;
+$xl: 1440px;
+$x: 1366px;
+$tablet: 1024px;
+$pc: 769px;
+$sp: 768px;
+@mixin xll {
+  @media screen and (min-width: $xll) {
+    @content;
+  }
+}
+@mixin xl {
+  @media only screen and (max-width: $xl) {
+    @content;
+  }
+}
+@mixin x {
+  @media only screen and (max-width: $x) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: $tablet) {
+    @content;
+  }
+}
+@mixin pc {
+  @media only screen and (min-width: $pc) {
+    @content;
+  }
+}
+@mixin sp {
+  @media only screen and (max-width: $sp) {
+    @content;
+  }
+}
+
+// vw
+@function vw($px-vw, $base-vw: $xl) {
+  $vw: math.div($px-vw * 100vw, $base-vw);
+  @return math.div(round($vw * 1000), 1000);
+}

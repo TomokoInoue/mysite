@@ -1,0 +1,39 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import '../../styles/style.scss';
+const homeUrl = import.meta.env.BASE_URL
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<main>
+			<Header />
+			<article class="desc__inner">
+    <picture class="desc__hero">
+     <img src={`${homeUrl}assets/work/desc/work_hero_img01.jpg`} alt="猫のデッサン" width="654" height="49">
+    </picture>
+    <div class="desc__catch">
+     <div class="desc__catch-main">
+      <ul class="desc__tag">
+       <li>勉強</li>
+       <li>イラスト</li>
+      </ul>
+      <p class="desc__ttl">猫のデッサン</p>
+     </div>
+     <p class="desc__date">2025.02.16</p>
+    </div>
+    <p class="desc__txt">デッサン勉強6回目。猫を描いてみた。まだまだ上手ではない。</p>
+    <p class="desc__link">https://rinkugaarutoki.com</p>
+   </article>
+		</main>
+		<!-- <script>
+			import "../scripts/menu.js";
+		</script> -->
+	</body>
+</html>

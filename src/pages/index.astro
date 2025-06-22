@@ -1,0 +1,27 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import LeftContent from '../components/LeftContent.astro';
+import RightContent from '../components/RightContent.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import '../styles/style.scss';
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<main class="main">
+			<Header />
+			<div class="main__contents">
+				<LeftContent />
+				<RightContent />
+			</div>
+		</main>
+		<!-- <script>
+			import "../scripts/menu.js";
+		</script> -->
+	</body>
+</html>
