@@ -8,20 +8,23 @@
     display: flex;
   }
   &__ttl {
-    margin: -0.6rem 4.94rem 0 0;
-    font-size: 2.85rem;
-    font-weight: 300;
+    margin: -1.8rem 4.94rem 0 0;
+    font-size: 3.5rem;
+    font-weight: 200;
+    letter-spacing: 0.175rem;
     span {
-      display: inline-block;
-      vertical-align: bottom;
-      padding-left: 0.5rem;
-      font-size: 3.25rem;
+      display: block;
+      margin-bottom: -0.4rem;
       font-family: 'Satoshi Variable';
-      font-weight: 100;
+      font-size: 0.75rem;
+      letter-spacing: 0.0375rem;
     }
     small {
-      padding-left: 0.38rem;
-      font-size: 1.5rem;
+      display: block;
+      margin-top: -0.4rem;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.025rem;
     }
   }
   &__wrap {
