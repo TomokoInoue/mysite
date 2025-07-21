@@ -14,7 +14,6 @@
     margin-bottom: 3.2rem;
   }
   &__phrase {
-    width: 22.31rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid $black;
   }
@@ -33,9 +32,6 @@
   .left {
     &__photo {
       width: 20vw;
-    }
-    &__phrase {
-      width: 22rem;
     }
     &__phrase-txt {
       font-size: clamp(0.875rem, 0.732rem + 0.3vw, 1rem);

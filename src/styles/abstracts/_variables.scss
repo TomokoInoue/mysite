@@ -6,8 +6,8 @@
 // colors
 $lightgray: #eceae4;
 $white: #ffffff;
-$black: #28282a;
-$text: #28282a;
+$black: #0f2a21;
+$text: #0f2a21;
 
 //eases
 $ease-back: cubic-bezier(0.68, -0.55, 0.27, 1.55);
@@ -15,13 +15,12 @@ $ease-custom1: cubic-bezier(0.23, 1, 0.32, 1);
 $ease-custom2: cubic-bezier(0.215, 0.61, 0.355, 1);
 
 // fonts family
-$gothic:
-  'Satoshi Variable', 'FP-KoburinaGoStdN-W3', 'FOTKYoonGothicPro730', sans-serif;
+$gothic: 'Satoshi Variable', 'FP-KoburinaGoStdN-W3', 'FOTKYoonGothicPro730', sans-serif;
 
 // responsive breakpoints
 $xll: 1600px;
 $xl: 1440px;
-$x: 1366px;
+$x: 1280px;
 $tablet: 1024px;
 $pc: 769px;
 $sp: 768px;

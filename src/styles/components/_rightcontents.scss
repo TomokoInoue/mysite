@@ -3,7 +3,7 @@
 // -----------------------------------------------
 
 .right {
-  margin: 14.25rem 0 0 auto;
+  margin: 14.25rem 3.6rem 0 auto;
   &__box {
     display: flex;
   }
@@ -21,7 +21,7 @@
     }
     small {
       display: block;
-      margin-top: -0.4rem;
+      margin-top: -0.2rem;
       font-size: 1rem;
       font-weight: 400;
       letter-spacing: 0.025rem;
@@ -65,14 +65,20 @@
   }
 }
 
-// 1366pxのマージン
+// 1280pxのマージン
 @include x {
   .right {
     &__box {
       display: inline;
     }
     &__ttl {
-      margin-bottom: 2rem;
+      position: relative;
+      margin: 0 0 2rem 0;
+      small {
+        position: absolute;
+        right: 0;
+        bottom: 0.65rem;
+      }
     }
   }
 }

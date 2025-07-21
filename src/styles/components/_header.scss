@@ -26,17 +26,13 @@
       font-family: $gothic;
     }
   }
-  .lang {
+  .info {
     display: flex;
     &__select {
       display: flex;
       position: relative;
       align-items: center;
-      margin-right: 2.5rem;
-      padding: 0.22rem 1.69rem 0.2rem 1.12rem;
-      border-radius: 3.5rem;
-      background: rgba(222, 220, 215, 0.5);
-      backdrop-filter: blur(5px);
+      margin-right: 1.5rem;
       p {
         font-size: 0.8rem;
         font-family: $gothic;
@@ -45,37 +41,47 @@
       }
     }
     &__time {
-      margin-right: 0.88rem;
+      margin-right: 0.75rem;
     }
     &__temp {
       margin-right: 0.5rem;
     }
-    &__flag {
-      margin-left: 1.62rem;
-      i {
-        display: block;
-        position: absolute;
-        top: 50%;
-        right: 0.69rem;
-        width: 10px;
-        height: 6px;
-        background-image: url(../assets/common/icon_arrow.svg);
-        background-size: contain;
-      }
+    &__city {
+      padding-left: 0.75rem;
     }
-    &__flag::before {
+    &__city::before {
       content: '';
+      display: inline-block;
+      width: 1px;
+      height: 0.75rem;
+      margin: -0.2rem 0.75rem 0 0;
+      border-left: 1px solid $black;
+      vertical-align: middle;
+    }
+  }
+  .lang {
+    position: relative;
+    margin-right: 2.5rem;
+    padding: 0.22rem 1.9rem 0.2rem 1rem;
+    border-radius: 3.5rem;
+    background: rgba(222, 220, 215, 0.5);
+    backdrop-filter: blur(5px);
+    font-size: 1.25rem;
+    i {
       display: block;
       position: absolute;
-      top: 54%;
-      right: 3.9rem;
-      width: 1px;
-      height: 16px;
-      background-color: rgba($color: #28282a, $alpha: 0.2);
-      transform: translate(-50%, -50%);
+      top: 44%;
+      right: 0.94rem;
+      width: 10px;
+      height: 6px;
+      background-image: url(../assets/common/icon_arrow.svg);
+      background-size: contain;
     }
     &__menu {
-      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%);
     }
   }
   .nav {
