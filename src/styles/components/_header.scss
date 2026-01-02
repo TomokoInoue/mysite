@@ -8,7 +8,7 @@
   margin: 1.88rem 2.25rem 0;
   &__right {
     display: flex;
-    align-items: center;
+    justify-content: flex-end;
     position: fixed;
     top: 2.06rem;
     right: 2.25rem;
@@ -31,13 +31,12 @@
     &__select {
       display: flex;
       position: relative;
-      align-items: center;
-      margin-right: 1.5rem;
+      margin: 0.45rem 1.5rem 0 0;
       p {
         font-size: 0.8rem;
         font-family: $gothic;
         font-weight: 400;
-        letter-spacing: 0.0375rem;
+        letter-spacing: 0.1rem;
       }
     }
     &__time {
@@ -45,6 +44,9 @@
     }
     &__temp {
       margin-right: 0.5rem;
+    }
+    &__weather {
+      margin-top: -0.35rem;
     }
     &__city {
       padding-left: 0.75rem;
@@ -60,38 +62,40 @@
     }
   }
   .lang {
-    position: relative;
-    margin-right: 2.5rem;
-    padding: 0.22rem 1.9rem 0.2rem 1rem;
-    border-radius: 3.5rem;
+    // margin-right: 2.5rem;
+    padding: 0.22rem 1rem 0.2rem;
+    border-radius: 1.28571rem;
     background: rgba(222, 220, 215, 0.5);
     backdrop-filter: blur(5px);
     font-size: 1.25rem;
+    .langMenu {
+      display: none;
+    }
+    /* JSで .lang に active が付いたら開く */
+    &.active .langMenu {
+      display: block;
+    }
     i {
       display: block;
       position: absolute;
-      top: 44%;
-      right: 0.94rem;
+      top: 1.18rem;
+      right: 0.5rem;
       width: 10px;
       height: 6px;
       background-image: url(../assets/common/icon_arrow.svg);
       background-size: contain;
-    }
-    &__menu {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translate(-50%);
+      transform: translate(-50%, -50%);
     }
   }
   .nav {
+    margin: 0.45rem 0 0 2.5rem;
     ul {
       display: flex;
       font-size: 0.875rem;
     }
-    li {
-      margin-right: 2rem;
-    }
+    // li {
+    //   margin-right: 2rem;
+    // }
     li:last-child {
       margin-right: 0;
     }

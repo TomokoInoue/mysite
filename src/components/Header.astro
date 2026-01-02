@@ -4,7 +4,7 @@ import MenuWork from "./MenuWork.astro";
 ---
 
 <header class="header">
-	<h1>Tomoko Jung<span>（人生珍道中ブログ）</span></h1>
+	<h1>Tomoko Inoue<span>（人生珍道中ブログ）</span></h1>
 	<div class="header__right">
 		<div class="info">
 			<div class="info__select">
@@ -13,18 +13,18 @@ import MenuWork from "./MenuWork.astro";
 				<p class="info__weather emoji">&#x2614;</p>
 				<p class="info__city">BUSAN</p>
 			</div>
-			<aside class="lang">
-				<button class="lang__def" id="langBtn">&#x1f1f0;&#x1f1f7;<i></i></button>
-				<ul class="lang__menu" id="langMenu">
-					<li class="lang__jp"><button>&#127471;&#127477;</button></li>
-					<!-- <li class="lang__en"><button>&#x1f1ec;&#x1f1e7;</button></li> -->
+			<div class="lang">
+				<button class="lang__btn langToggle" data-current="ko">&#x1f1f0;&#x1f1f7;</button>
+				<ul class="lang__list langMenu">
+					<li><button data-lang="ko" class="isHidden">&#x1f1f0;&#x1f1f7;</button></li>
+					<li><button data-lang="ja" class="">&#127471;&#127477;</button></li>
 				</ul>
-			</aside>
+			</div>
 		</div>
 		<nav class="nav">
 			<ul>
-				<li class="nav__about"><a href="/">メニュー</a></li>
-				<!-- <li class="nav__work"><a href="/about/">つくったもの</a></li> -->
+				<li class="nav__about langText" data-lang="ko"><a href="/">나</a></li>
+				<li class="nav__about langText isHidden" data-lang="ja"><a href="/">私</a></li>
 			</ul>
 		</nav>
 	</div>
