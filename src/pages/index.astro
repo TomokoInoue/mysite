@@ -15,12 +15,14 @@ import '../styles/style.scss';
 	</head>
 	<body>
 		<div class="wrapper" data-site>
-			<div class="main" data-main>
-				<Header />
-				<main class="contents">
-					<LeftContent />
-					<RightContent />
-				</main>
+			<div class="stage pushable">
+				<div class="main" data-main>
+					<Header />
+					<main class="contents">
+						<LeftContent />
+						<RightContent />
+					</main>
+				</div>
 			</div>
 			<Drawer />
 		</div>

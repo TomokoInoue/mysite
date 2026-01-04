@@ -4,13 +4,11 @@
 
 .header {
   display: flex;
-  align-items: center;
   margin: 1.88rem 2.25rem 0;
   &__right {
     display: flex;
     justify-content: flex-end;
     position: fixed;
-    top: 2.06rem;
     right: 2.25rem;
   }
   h1 {
@@ -26,6 +24,7 @@
       font-family: $gothic;
     }
   }
+
   .info {
     display: flex;
     &__select {

@@ -4,13 +4,15 @@
 
 .wrapper {
   --drawer-w: 400px; // メニュー幅（好きに）
+  --shift-x: 0px;
   position: relative;
   overflow-x: hidden; // 左にズレた時の横スクロール防止
-
+  padding-right: 0;
+  transition: padding-right 0.35s ease;
+  background-color: $base-color;
   .main {
-    transition: transform 0.35s ease;
-    // will-change: transform;
-
+    margin-right: 0;
+    transition: margin-right 0.35s ease;
     .contents {
       display: flex;
       justify-content: space-between;
@@ -19,12 +21,19 @@
   }
 }
 
-// メニュー開閉
+// メニュー開閉（_header.scssにも記載「//左に動かす挙動」のところ）
 .wrapper.isDrawerOpen {
-  .main {
-    transform: translateX(calc(var(--drawer-w) * -1));
-  }
+  --shift-x: var(--drawer-w);
   .drawer {
     transform: translateX(0);
   }
+  // メニュー展開時の左に動く挙動
+  .pushable {
+    transform: translateX(calc(-1 * var(--shift-x)));
+    transition: transform 0.35s ease;
+    will-change: transform;
+  }
+  // .left {
+  //   transform: translateX(calc(-1 * var(--drawer-w)));
+  // }
 }

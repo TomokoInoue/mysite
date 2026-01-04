@@ -7,6 +7,8 @@
   left: 2.45rem;
   bottom: 1.93rem;
   margin-right: 5.5rem;
+  transition: transform 0.35s ease;
+  will-change: transform;
   &__photo {
     display: block;
     width: 18.56rem;

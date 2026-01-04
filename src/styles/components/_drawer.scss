@@ -2,13 +2,13 @@
 // about me
 // -----------------------------------------------
 .drawer {
+  z-index: 1000;
   position: fixed;
   top: 0;
   right: 0;
   width: var(--drawer-w);
   height: 100vh;
   padding: 0 2.29rem 0;
-  // 見た目（黒背景）
   background: $main-color;
   color: $white;
   // 右に隠しておく
