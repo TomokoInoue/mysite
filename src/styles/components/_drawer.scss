@@ -1,0 +1,49 @@
+// -----------------------------------------------
+// about me
+// -----------------------------------------------
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: var(--drawer-w);
+  height: 100vh;
+  padding: 0 2.29rem 0;
+  // 見た目（黒背景）
+  background: $main-color;
+  color: $white;
+  // 右に隠しておく
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  // 中身が長いときスクロールできるように
+  overflow-y: auto;
+
+  &__inner {
+    width: 19.21rem;
+    margin: 0 auto;
+  }
+}
+.drawer svg {
+  color: #fff;
+}
+
+.profile {
+  margin: 10rem auto 0;
+  p {
+    font-size: 1rem;
+  }
+  &__img {
+    display: block;
+    width: 8.57rem;
+    margin: 0 auto;
+  }
+  &__name {
+    margin: 0.7rem 0 2.86rem;
+    text-align: center;
+  }
+}
+
+.share {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.95rem;
+}

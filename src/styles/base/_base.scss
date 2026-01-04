@@ -17,7 +17,7 @@ html {
 }
 body {
   background-color: $lightgray;
-  color: $black;
+  color: $main-color;
   font-family: $gothic;
   font-optical-sizing: auto;
   // font-feature-settings: 'palt';
@@ -128,7 +128,7 @@ picture.cover {
         bottom: -0.2rem;
         width: 100%;
         height: 1px;
-        background-color: $black;
+        background-color: $main-color;
         position: absolute;
         opacity: 0;
         transition: opacity 0.2s ease-in-out;

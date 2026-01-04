@@ -1,13 +1,13 @@
 'use strict';
-console.log('読み込み');
+console.log('読み込み！');
 
 // document.querySelector('.hamburger').addEventListener('click', () => {
 //   document.querySelector('.nav-links').classList.toggle('expanded');
 // });
 
-/* ------------------
+/* --------------------------
    時間の表示
-------------------- */
+--------------------------- */
 function updateTime() {
   const nowUTC = new Date();
   const offset = 9; // 東京・釜山どちらもUTC+9
@@ -22,26 +22,26 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
-/* ------------------
+/* --------------------------
    言語切り替え
-------------------- */
+--------------------------- */
 const toggleBtn = document.querySelector('.langToggle');
-const menu = document.querySelector('.langMenu');
+const langMenu = document.querySelector('.langMenu');
 const langTexts = document.querySelectorAll('.langText');
-const jaBtn = menu.querySelector('button[data-lang="ja"]'); //buttonタグかつ、data-lang属性が"ja"のもの
-const koBtn = menu.querySelector('button[data-lang="ko"]');
+const jaBtn = langMenu.querySelector('button[data-lang="ja"]'); //buttonタグかつ、data-lang属性が"ja"のもの
+const koBtn = langMenu.querySelector('button[data-lang="ko"]');
 
 // 【メニュー表示切替】
 //　アロー関数を使ってfunctionをわざわざ書かずに使い捨て
 toggleBtn.addEventListener('click', () => {
   console.log('クリック！');
-  menu.parentElement.classList.toggle('active');
+  langMenu.parentElement.classList.toggle('active');
 });
 
 // 【各言語ボタンの切り替え処理】
-//　コールバック関数のforEachを使ってループ処理を行う（menuの中身を集めて、1つ1つのbtnに同じ処理をする。forEachが順番に処理を渡している。btnの所の名前はなんでも良い）
+//　コールバック関数のforEachを使ってループ処理を行う（langMenuの中身を集めて、1つ1つのbtnに同じ処理をする。forEachが順番に処理を渡している。btnの所の名前はなんでも良い）
 //　クリックされたら、そのbuttonタグが持っている[data-lang]を読む
-menu.querySelectorAll('button').forEach((btn) => {
+langMenu.querySelectorAll('button').forEach((btn) => {
   btn.addEventListener('click', () => {
     console.log('言語を切り替えるよ！');
     const selectedLang = btn.dataset.lang;
@@ -65,6 +65,21 @@ menu.querySelectorAll('button').forEach((btn) => {
     }
 
     //メニューを閉じる
-    menu.parentElement.classList.remove('active');
+    langMenu.parentElement.classList.remove('active');
   });
 });
+
+/* --------------------------------
+   ハンバーガーメニューの開閉
+--------------------------------- */
+const InfoBtn = document.querySelector('[data-menu-btn]');
+const wrap = document.querySelector('[data-site]');
+
+if (InfoBtn && wrap) {
+  InfoBtn.addEventListener('click', () => {
+    console.log('ここまできた！');
+    const isOpen = wrap.classList.toggle('isDrawerOpen');
+    // area-expandedは、htmlタグにつける属性。開閉の記録をしているだけ
+    InfoBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+}

@@ -2,10 +2,29 @@
 // home
 // -----------------------------------------------
 
-.main {
-  &__contents {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 2.25rem;
+.wrapper {
+  --drawer-w: 400px; // メニュー幅（好きに）
+  position: relative;
+  overflow-x: hidden; // 左にズレた時の横スクロール防止
+
+  .main {
+    transition: transform 0.35s ease;
+    // will-change: transform;
+
+    .contents {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 2.25rem;
+    }
+  }
+}
+
+// メニュー開閉
+.wrapper.isDrawerOpen {
+  .main {
+    transform: translateX(calc(var(--drawer-w) * -1));
+  }
+  .drawer {
+    transform: translateX(0);
   }
 }

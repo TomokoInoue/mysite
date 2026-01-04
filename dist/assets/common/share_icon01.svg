@@ -1,3 +1,12 @@
-<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M9.92704 7.27553L15.5111 0.504105H14.1879L9.33921 6.38364L5.4666 0.504105H1L6.85615 9.39501L1 16.4959H2.32332L7.44364 10.2869L11.5334 16.4959H16L9.92671 7.27553H9.92704ZM8.11456 9.47334L7.52121 8.588L2.80014 1.54331H4.83269L8.64265 7.2286L9.236 8.11394L14.1885 15.5039H12.156L8.11456 9.47368V9.47334Z" fill="#28282A"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 17 17">
+  <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #eceae4;
+      }
+    </style>
+  </defs>
+  <path class="st0" d="M9.9,7.3L15.5.5h-1.3l-4.8,5.9L5.5.5H1l5.9,8.9-5.9,7.1h1.3l5.1-6.2,4.1,6.2h4.5l-6.1-9.2h0ZM8.1,9.5l-.6-.9L2.8,1.5h2l3.8,5.7.6.9,5,7.4h-2l-4-6h0Z"/>
 </svg>

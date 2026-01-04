@@ -1,6 +1,5 @@
 ---
-import MenuAbout from "./MenuAbout.astro";
-import MenuWork from "./MenuWork.astro";
+
 ---
 
 <header class="header">
@@ -22,12 +21,11 @@ import MenuWork from "./MenuWork.astro";
 			</div>
 		</div>
 		<nav class="nav">
-			<ul>
-				<li class="nav__about langText" data-lang="ko"><a href="/">나</a></li>
-				<li class="nav__about langText isHidden" data-lang="ja"><a href="/">私</a></li>
-			</ul>
+			<button type="button" class="nav__btn" data-menu-btn aria-expanded="false">
+    <span class="nav__text langText" data-lang="ko">나</span>
+    <span class="nav__text langText isHidden" data-lang="ja">私</span>
+  	</button>
 		</nav>
 	</div>
-	<MenuAbout />
-	<MenuWork />
+	<!-- <MenuWork /> -->
 </header>

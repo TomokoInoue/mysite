@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import LeftContent from '../components/LeftContent.astro';
 import RightContent from '../components/RightContent.astro';
+import Drawer from '../components/Drawer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import '../styles/style.scss';
 ---
@@ -13,13 +14,16 @@ import '../styles/style.scss';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<main class="main">
-			<Header />
-			<div class="main__contents">
-				<LeftContent />
-				<RightContent />
+		<div class="wrapper" data-site>
+			<div class="main" data-main>
+				<Header />
+				<main class="contents">
+					<LeftContent />
+					<RightContent />
+				</main>
 			</div>
-		</main>
+			<Drawer />
+		</div>
 		<script>
 			import "../scripts/menu.js";
 			</script>
