@@ -3,7 +3,7 @@
 // -----------------------------------------------
 
 html {
-  font-size: 62.5%;
+  font-size: 100%; /* 16px × 0.875 = 14px */ /* ブラウザデフォルトサイズの16px × 62.5% = 10px（figma開発モードで単位が「10」ならば、font-size: 62.5% とする） */
   scroll-behavior: smooth;
   @media screen and (min-width: 1441px) {
     font-size: 100%;

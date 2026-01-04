@@ -74,12 +74,32 @@ langMenu.querySelectorAll('button').forEach((btn) => {
 --------------------------------- */
 const InfoBtn = document.querySelector('[data-menu-btn]');
 const wrap = document.querySelector('[data-site]');
+const closeBtn = document.querySelector('[data-menu-close]');
 
 if (InfoBtn && wrap) {
   InfoBtn.addEventListener('click', () => {
-    console.log('ここまできた！');
+    console.log('自己紹介するよ！');
     const isOpen = wrap.classList.toggle('isDrawerOpen');
     // area-expandedは、htmlタグにつける属性。開閉の記録をしているだけ
     InfoBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+}
+
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    console.log('閉じる！');
+    closeMenu();
+  });
+}
+
+function closeMenu() {
+  wrap.classList.remove('isDrawerOpen');
+  InfoBtn.setAttribute('aria-expanded', 'false');
+}
+
+if (closeBtn && wrap && InfoBtn) {
+  closeBtn.addEventListener('click', () => {
+    console.log('閉じる！');
+    closeMenu();
   });
 }

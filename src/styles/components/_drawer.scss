@@ -16,20 +16,55 @@
   transition: transform 0.35s ease;
   // 中身が長いときスクロールできるように
   overflow-y: auto;
-
   &__inner {
     width: 19.21rem;
-    margin: 0 auto;
+    margin: 0 auto 5.37rem;
+  }
+
+  // ハンバーガーメニュー閉じる
+  &__close {
+    position: absolute;
+    top: 1.75rem;
+    right: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; // タップハイライト消し（iOS）
+  }
+  // 2本線で×ボタンを作る
+  &__close::before,
+  &__close::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2.8rem; // 線の長さ
+    height: 1px; // 線の太さ
+    background: $white;
+    transform-origin: center;
+  }
+  // 回転させて×にする
+  &__close::before {
+    transform: translate(-50%, -50%) rotate(20deg);
+  }
+  &__close::after {
+    transform: translate(-50%, -50%) rotate(-20deg);
   }
 }
 .drawer svg {
   color: #fff;
 }
+[data-site].isDrawerOpen .nav {
+  opacity: 0;
+  pointer-events: none;
+}
 
 .profile {
-  margin: 10rem auto 0;
+  margin: 8.75rem auto 0;
   p {
-    font-size: 1rem;
+    font-family: $gothic;
+    font-size: 0.875rem;
+    line-height: 190%; /* 1.575rem */
   }
   &__img {
     display: block;
@@ -44,6 +79,65 @@
 
 .share {
   display: flex;
-  gap: 1rem;
-  margin-top: 2.95rem;
+  gap: 1.25rem;
+  margin: 1.8rem 0 2.8rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #516162;
+  li {
+    width: 1.06rem;
+    height: 1.06rem;
+  }
+  a {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0) invert(1) opacity(0.85);
+  }
+}
+
+.friends {
+  &__ttl {
+    margin-bottom: 1.75rem;
+    font-size: 0.875rem;
+  }
+  &__list {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; // iOSでヌルヌル
+    scroll-snap-type: x mandatory; // スクロールしても要素ピッタリに合うように
+    scrollbar-width: none; // Firefox
+    margin-right: -2.9rem; // この要素だけ右にはみ出るように。親の右paddingを打ち消す
+    padding-right: 2.9rem; // いちばん右のカードがくっつきすぎないように
+    @include x {
+      margin-right: -4.4rem; // この要素だけ右にはみ出るように。親の右paddingを打ち消す
+      padding-right: 4.4rem; // いちばん右のカードがくっつきすぎないように
+    }
+  }
+  &__list::-webkit-scrollbar {
+    display: none;
+  }
+  &__card {
+    flex: 0 0 auto; // 折り返さない
+    width: 6.25rem;
+    scroll-snap-align: start; // 左端で止まる
+  }
+  &__name {
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.015rem;
+    span {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: 0.68rem;
+      opacity: 0.5;
+    }
+  }
 }
