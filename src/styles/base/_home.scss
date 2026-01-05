@@ -3,8 +3,9 @@
 // -----------------------------------------------
 
 .wrapper {
-  --drawer-w: 400px; // メニュー幅（好きに）
-  --shift-x: 0px;
+  --drawer-w: 400px;
+  --drawer-x: 0px;  // Drawerが押し出す量
+  --follow-x: 0px;  // 追従（スクロール等）の量
   position: relative;
   overflow-x: hidden; // 左にズレた時の横スクロール防止
   padding-right: 0;
@@ -23,17 +24,14 @@
 
 // メニュー開閉（_header.scssにも記載「//左に動かす挙動」のところ）
 .wrapper.isDrawerOpen {
-  --shift-x: var(--drawer-w);
+  --drawer-x: var(--drawer-w);
   .drawer {
     transform: translateX(0);
   }
   // メニュー展開時の左に動く挙動
   .pushable {
-    transform: translateX(calc(-1 * var(--shift-x)));
+    transform: translateX(calc(-1 * var(--drawer-x)));
     transition: transform 0.35s ease;
     will-change: transform;
   }
-  // .left {
-  //   transform: translateX(calc(-1 * var(--drawer-w)));
-  // }
 }

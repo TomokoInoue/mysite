@@ -76,30 +76,25 @@ const InfoBtn = document.querySelector('[data-menu-btn]');
 const wrap = document.querySelector('[data-site]');
 const closeBtn = document.querySelector('[data-menu-close]');
 
+// 1) 状態を1箇所で管理する
+function setDrawerOpen(isOpen) {
+  if (!wrap || !InfoBtn) return; // 2) 安全ガード
+
+  wrap.classList.toggle('isDrawerOpen', isOpen);
+  InfoBtn.setAttribute('aria-expanded', String(isOpen));
+}
+
+// 開く/閉じる（トグル）
 if (InfoBtn && wrap) {
   InfoBtn.addEventListener('click', () => {
-    console.log('自己紹介するよ！');
-    const isOpen = wrap.classList.toggle('isDrawerOpen');
-    // area-expandedは、htmlタグにつける属性。開閉の記録をしているだけ
-    InfoBtn.setAttribute('aria-expanded', String(isOpen));
+    const isOpen = wrap.classList.contains('isDrawerOpen');
+    setDrawerOpen(!isOpen);
   });
 }
 
+// 閉じる（×）※ 3) クリック登録は1回だけ
 if (closeBtn) {
   closeBtn.addEventListener('click', () => {
-    console.log('閉じる！');
-    closeMenu();
-  });
-}
-
-function closeMenu() {
-  wrap.classList.remove('isDrawerOpen');
-  InfoBtn.setAttribute('aria-expanded', 'false');
-}
-
-if (closeBtn && wrap && InfoBtn) {
-  closeBtn.addEventListener('click', () => {
-    console.log('閉じる！');
-    closeMenu();
+    setDrawerOpen(false);
   });
 }
