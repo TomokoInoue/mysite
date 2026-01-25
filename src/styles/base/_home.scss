@@ -8,30 +8,26 @@
   --follow-x: 0px;  // 追従（スクロール等）の量
   position: relative;
   overflow-x: hidden; // 左にズレた時の横スクロール防止
-  padding-right: 0;
-  transition: padding-right 0.35s ease;
   background-color: $base-color;
-  .main {
+  .contents {
+    display: flex;
+    justify-content: space-between;
     margin-right: 0;
     transition: margin-right 0.35s ease;
-    .contents {
-      display: flex;
-      justify-content: space-between;
-      margin: 0 2.25rem;
-    }
+    margin: 0 2.25rem 0 0;
   }
 }
 
-// メニュー開閉（_header.scssにも記載「//左に動かす挙動」のところ）
+.pushable {
+  transform: translateX(calc(-1 * var(--drawer-x)));
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+// メニュー開閉（.isDrawerOpenになったときにpushableをどうするか）
 .wrapper.isDrawerOpen {
   --drawer-x: var(--drawer-w);
   .drawer {
     transform: translateX(0);
-  }
-  // メニュー展開時の左に動く挙動
-  .pushable {
-    transform: translateX(calc(-1 * var(--drawer-x)));
-    transition: transform 0.35s ease;
-    will-change: transform;
   }
 }

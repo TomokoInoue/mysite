@@ -6,7 +6,7 @@
   position: fixed;
   left: 2.45rem;
   bottom: 1.93rem;
-  transform: translateX(calc(-1 * (var(--drawer-x) + var(--follow-x))));
+  transform: translateX(calc(-1 * var(--drawer-x)));
   transition: transform 0.35s ease;
   will-change: transform;
   &__photo {

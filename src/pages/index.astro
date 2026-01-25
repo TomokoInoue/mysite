@@ -15,20 +15,17 @@ import '../styles/style.scss';
 	</head>
 	<body>
 		<div class="wrapper" data-site>
+			<Header />
+			<LeftContent />
 			<div class="stage pushable">
-				<div class="main" data-main>
-					<Header />
-					<main class="contents">
-						<LeftContent />
-						<RightContent />
-					</main>
-				</div>
+				<main class="contents">
+					<RightContent />
+				</main>
 			</div>
 			<Drawer />
 		</div>
 		<script>
 			import "../scripts/menu.js";
 			</script>
-		<!-- <script type="module" src="/scripts/menu.js"></script> -->
 	</body>
 </html>

@@ -1,22 +1,22 @@
+// 読み込み確認
 'use strict';
-console.log('読み込み！');
-
-// document.querySelector('.hamburger').addEventListener('click', () => {
-//   document.querySelector('.nav-links').classList.toggle('expanded');
-// });
 
 /* --------------------------
    時間の表示
 --------------------------- */
 function updateTime() {
-  const nowUTC = new Date();
+  const now = new Date();
   const offset = 9; // 東京・釜山どちらもUTC+9
 
-  const localTime = new Date(nowUTC.getTime() + nowUTC.getTimezoneOffset() * 60000 + offset * 3600000);
+  const localTime = new Date(
+    now.getTime() + now.getTimezoneOffset() * 60000 + offset * 3600000
+  );
+
   const hh = String(localTime.getHours()).padStart(2, '0');
   const mm = String(localTime.getMinutes()).padStart(2, '0');
 
-  document.getElementById('time').textContent = `${hh}:${mm}`;
+  const el = document.getElementById('time');
+  if (el) el.textContent = `${hh}:${mm}`;
 }
 
 updateTime();
@@ -28,73 +28,70 @@ setInterval(updateTime, 1000);
 const toggleBtn = document.querySelector('.langToggle');
 const langMenu = document.querySelector('.langMenu');
 const langTexts = document.querySelectorAll('.langText');
-const jaBtn = langMenu.querySelector('button[data-lang="ja"]'); //buttonタグかつ、data-lang属性が"ja"のもの
-const koBtn = langMenu.querySelector('button[data-lang="ko"]');
 
-// 【メニュー表示切替】
-//　アロー関数を使ってfunctionをわざわざ書かずに使い捨て
-toggleBtn.addEventListener('click', () => {
-  console.log('クリック！');
-  langMenu.parentElement.classList.toggle('active');
-});
+if (toggleBtn && langMenu) {
+  const jaBtn = langMenu.querySelector('button[data-lang="ja"]');
+  const koBtn = langMenu.querySelector('button[data-lang="ko"]');
 
-// 【各言語ボタンの切り替え処理】
-//　コールバック関数のforEachを使ってループ処理を行う（langMenuの中身を集めて、1つ1つのbtnに同じ処理をする。forEachが順番に処理を渡している。btnの所の名前はなんでも良い）
-//　クリックされたら、そのbuttonタグが持っている[data-lang]を読む
-langMenu.querySelectorAll('button').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    console.log('言語を切り替えるよ！');
-    const selectedLang = btn.dataset.lang;
-
-    //テキスト表示の切り替え（もし要素の[data-lang]が選んだ言語と違ったら".isHidden"を付ける。同じなら外す）
-    langTexts.forEach((el) => {
-      el.classList.toggle('isHidden', el.dataset.lang !== selectedLang);
-    });
-
-    //トグルボタンの国旗変更（クリックしたbuttonの国旗をそのままコピー + 現在の言語状態も更新）
-    toggleBtn.textContent = btn.textContent;
-    toggleBtn.dataset.current = selectedLang;
-
-    //ボタンの表示制御（今選んだ言語は非表示に）
-    if (selectedLang === 'ja') {
-      jaBtn.classList.add('isHidden');
-      koBtn.classList.remove('isHidden');
-    } else {
-      jaBtn.classList.remove('isHidden');
-      koBtn.classList.add('isHidden');
-    }
-
-    //メニューを閉じる
-    langMenu.parentElement.classList.remove('active');
+  // 言語メニューの開閉
+  toggleBtn.addEventListener('click', () => {
+    langMenu.parentElement.classList.toggle('active');
   });
-});
+
+  // 言語選択
+  langMenu.querySelectorAll('button').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedLang = btn.dataset.lang;
+      // テキストの切り替え
+      langTexts.forEach((el) => {
+        el.classList.toggle(
+          'isHidden',
+          el.dataset.lang !== selectedLang
+        );
+      });
+
+      // トグルボタン表示更新
+      toggleBtn.textContent = btn.textContent;
+      toggleBtn.dataset.current = selectedLang;
+
+      // 選択中言語ボタンを隠す
+      if (selectedLang === 'ja') {
+        jaBtn?.classList.add('isHidden');
+        koBtn?.classList.remove('isHidden');
+      } else {
+        jaBtn?.classList.remove('isHidden');
+        koBtn?.classList.add('isHidden');
+      }
+
+      // メニューを閉じる
+      langMenu.parentElement.classList.remove('active');
+    });
+  });
+}
 
 /* --------------------------------
    ハンバーガーメニューの開閉
 --------------------------------- */
-const InfoBtn = document.querySelector('[data-menu-btn]');
-const wrap = document.querySelector('[data-site]');
+const infoBtn = document.querySelector('[data-menu-btn]');
+const siteWrap = document.querySelector('[data-site]');
 const closeBtn = document.querySelector('[data-menu-close]');
 
-// 1) 状態を1箇所で管理する
-function setDrawerOpen(isOpen) {
-  if (!wrap || !InfoBtn) return; // 2) 安全ガード
-
-  wrap.classList.toggle('isDrawerOpen', isOpen);
-  InfoBtn.setAttribute('aria-expanded', String(isOpen));
+// 閉じる処理（共通関数）
+function closeDrawer() {
+  if (!siteWrap || !infoBtn) return;
+  siteWrap.classList.remove('isDrawerOpen');
+  infoBtn.setAttribute('aria-expanded', 'false');
 }
 
-// 開く/閉じる（トグル）
-if (InfoBtn && wrap) {
-  InfoBtn.addEventListener('click', () => {
-    const isOpen = wrap.classList.contains('isDrawerOpen');
-    setDrawerOpen(!isOpen);
+// 開閉ボタン
+if (infoBtn && siteWrap) {
+  infoBtn.addEventListener('click', () => {
+    const isOpen = siteWrap.classList.toggle('isDrawerOpen');
+    infoBtn.setAttribute('aria-expanded', String(isOpen));
   });
 }
 
-// 閉じる（×）※ 3) クリック登録は1回だけ
+// ×ボタン
 if (closeBtn) {
-  closeBtn.addEventListener('click', () => {
-    setDrawerOpen(false);
-  });
+  closeBtn.addEventListener('click', closeDrawer);
 }

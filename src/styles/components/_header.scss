@@ -10,7 +10,8 @@
     justify-content: flex-end;
     position: fixed;
     right: 2.25rem;
-    transform: translateX(calc(-1 * (var(--drawer-x) + var(--follow-x))));
+    z-index: 10;
+    transform: translateX(calc(-1 * var(--drawer-x)));
     transition: transform 0.35s ease;
     will-change: transform;
   }
