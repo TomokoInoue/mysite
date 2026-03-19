@@ -1,48 +1,79 @@
 ---
-
+import { render } from 'astro:content';
+const { posts } = Astro.props;
+const post = posts[0];
+const { Content } = await render(post);
 ---
 
 <article class="right">
  <section class="right__box">
   <p class="right__ttl">
-   <span>2025</span>12.24
-   <small class="langText" data-lang="ko">월요일</small>
-   <small class="langText isHidden" data-lang="ja">月曜日</small>
+   <span>{post.data.year}</span>{post.data.month}.{post.data.day}
+   <small class="langText" data-lang="ko">{post.data.weekKo}</small>
+   <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
   </p>
   <div class="right__wrap">
-   <h2 class="langText" data-lang="ko">유학 후 첫 블로그입니다. 내일부터 어학당 수업이 시작됩니다.</h2>
-   <h2 class="langText isHidden" data-lang="ja">留学して初めてのブログです。明日から語学堂での授業が始まります。</h2>
-   <p class="right__txt langText" data-lang="ko">시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 사람이 많은 거리에 나가는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 목표를 가지고 열심히 공부하겠습니다! 시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 혼자서 시내를 돌아다니는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 목표를 가지고 열심히 공부하겠습니다! 시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 혼자서 시내를 돌아다니는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 목표를 가지고 열심히 공부하겠습니다! 시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 혼자서 시내를 돌아다니는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 열심히 노력하겠습니다!</p>
-   <p class="right__txt langText isHidden" data-lang="ja">テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！</p>
-   <button class="right__btn">&#x1f44f;</button>
+   <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
+   <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
+   <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
+   <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
+   <!-- <button class="right__btn">&#x1f44f;</button> -->
   </div>
  </section>
  <section class="right__box">
   <p class="right__ttl">
-   <span>2025</span>12.23
-   <small class="langText" data-lang="ko">일요일</small>
-   <small class="langText isHidden" data-lang="ja">日曜日</small>
+   <span>{post.data.year}</span>{post.data.month}.{post.data.day}
+   <small class="langText" data-lang="ko">{post.data.weekKo}</small>
+   <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
   </p>
   <div class="right__wrap">
-   <h2 class="langText" data-lang="ko">유학 후 첫 블로그입니다. 내일부터 어학당 수업이 시작됩니다.</h2>
-   <h2 class="langText isHidden" data-lang="ja">留学して初めてのブログです。明日から語学堂での授業が始まります。</h2>
-   <p class="right__txt langText" data-lang="ko">시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 사람이 많은 거리에 나가는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 목표를 가지고 열심히 공부하겠습니다! 시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 혼자서 시내를 돌아다니는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 목표를 가지고 열심히 공부하겠습니다! 시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 혼자서 시내를 돌아다니는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 목표를 가지고 열심히 공부하겠습니다! 시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 혼자서 시내를 돌아다니는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 열심히 노력하겠습니다!</p>
-   <p class="right__txt langText isHidden" data-lang="ja">テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！</p>
-   <button class="right__btn">&#x1f44f;</button>
+   <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
+   <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
+   <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
+   <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
+   <!-- <button class="right__btn">&#x1f44f;</button> -->
   </div>
  </section>
  <section class="right__box">
   <p class="right__ttl">
-   <span>2025</span>12.22
-   <small class="langText" data-lang="ko">토요일</small>
-   <small class="langText isHidden" data-lang="ja">土曜日</small>
+   <span>{post.data.year}</span>{post.data.month}.{post.data.day}
+   <small class="langText" data-lang="ko">{post.data.weekKo}</small>
+   <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
   </p>
   <div class="right__wrap">
-   <h2 class="langText" data-lang="ko">유학 후 첫 블로그입니다. 내일부터 어학당 수업이 시작됩니다.</h2>
-   <h2 class="langText isHidden" data-lang="ja">留学して初めてのブログです。明日から語学堂での授業が始まります。</h2>
-   <p class="right__txt langText" data-lang="ko">시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 사람이 많은 거리에 나가는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 목표를 가지고 열심히 공부하겠습니다! 시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 혼자서 시내를 돌아다니는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 목표를 가지고 열심히 공부하겠습니다! 시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 혼자서 시내를 돌아다니는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 목표를 가지고 열심히 공부하겠습니다! 시험도 무사히 끝났고, 드디어 내일부터 어학당에서 수업이 시작됩니다. 아직은 혼자서 시내를 돌아다니는 것이 걱정입니다. 한국 유학은 3개월 정도이지만, 사회인이 되어 새롭게 공부할 수 있는 시간을 소중히 여기려고 합니다. 3개월 안에 일상회화를 할 수 있도록 열심히 노력하겠습니다!</p>
-   <p class="right__txt langText isHidden" data-lang="ja">テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！テストも無事に終わって、ついに明日から語学堂にて授業が始まります。まだまだ人で街を出かけるのが心配です。韓国留学は3ヶ月ほどですが、社会人になって新たに勉強できる時間を大切にしようと思います。しっかり目標を持って3ヶ月で日常会話を話せるように頑張ります！！</p>
-   <button class="right__btn">&#x1f44f;</button>
+   <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
+   <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
+   <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
+   <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
+   <!-- <button class="right__btn">&#x1f44f;</button> -->
+  </div>
+ </section>
+ <section class="right__box">
+  <p class="right__ttl">
+   <span>{post.data.year}</span>{post.data.month}.{post.data.day}
+   <small class="langText" data-lang="ko">{post.data.weekKo}</small>
+   <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
+  </p>
+  <div class="right__wrap">
+   <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
+   <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
+   <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
+   <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
+   <!-- <button class="right__btn">&#x1f44f;</button> -->
+  </div>
+ </section>
+ <section class="right__box">
+  <p class="right__ttl">
+   <span>{post.data.year}</span>{post.data.month}.{post.data.day}
+   <small class="langText" data-lang="ko">{post.data.weekKo}</small>
+   <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
+  </p>
+  <div class="right__wrap">
+   <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
+   <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
+   <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
+   <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
+   <!-- <button class="right__btn">&#x1f44f;</button> -->
   </div>
  </section>
 </article>

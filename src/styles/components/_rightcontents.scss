@@ -29,6 +29,7 @@
   }
   &__wrap {
     max-width: 37.18rem;
+    margin-bottom: 12.5rem;
   }
   h2 {
     margin-bottom: 4rem;
@@ -50,7 +51,7 @@
   }
   &__btn {
     display: block;
-    margin: 0 0 12.5rem auto;
+    // margin: 0 auto;
     width: 2.6rem;
     height: 2.6rem;
     border-radius: 2.6rem;

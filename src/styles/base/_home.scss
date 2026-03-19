@@ -5,29 +5,106 @@
 .wrapper {
   --drawer-w: 400px;
   --drawer-x: 0px;  // Drawerが押し出す量
-  --follow-x: 0px;  // 追従（スクロール等）の量
   position: relative;
   overflow-x: hidden; // 左にズレた時の横スクロール防止
   background-color: $base-color;
   .contents {
     display: flex;
     justify-content: space-between;
-    margin-right: 0;
     transition: margin-right 0.35s ease;
-    margin: 0 2.25rem 0 0;
   }
 }
 
 .pushable {
   transform: translateX(calc(-1 * var(--drawer-x)));
   transition: transform 0.35s ease;
-  will-change: transform;
+}
+
+// 追従フレーム（最前面）
+.frame {
+  --outline: 8px solid #0F272A;
+  position: fixed;
+  inset: 0;
+  outline: var(--outline);
+  border: var(--outline);
+  outline-offset: -8px;
+  transition: outline-width 200ms ease, outline-offset 200ms ease;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+}
+
+.roundCorner {
+  opacity: 0;
 }
 
 // メニュー開閉（.isDrawerOpenになったときにpushableをどうするか）
 .wrapper.isDrawerOpen {
+  .header {
+    margin-top: 2.29rem;
+  }
   --drawer-x: var(--drawer-w);
+  top: 8px;
+  transition: 0.35s ease;
   .drawer {
     transform: translateX(0);
+  }
+  .frame {
+    opacity: 1;
+    inset: 0;
+    outline: var(--outline);
+    outline-width: 16px;
+    outline-offset: -16px;
+  }
+  .cornerLeftTop {
+    opacity: 1;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1.42rem;
+    height: 1.42rem;
+    background-image: url(assets/common/corner.svg);
+    background-size: contain;
+    top: 8px;
+    left: 8px;
+  }
+  .cornerRightTop {
+    opacity: 1;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1.42rem;
+    height: 1.42rem;
+    background-image: url(assets/common/corner.svg);
+    background-size: contain;
+    top: 8px;
+    right: calc(0.979 * var(--drawer-x));
+    transform: rotate(90deg);
+  }
+  .cornerLeftBottom {
+    opacity: 1;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1.42rem;
+    height: 1.42rem;
+    background-image: url(assets/common/corner.svg);
+    background-size: contain;
+    left: 8px;
+    bottom: 8px;
+    transform: rotate(270deg);
+  }
+  .cornerRightBottom {
+    opacity: 1;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1.42rem;
+    height: 1.42rem;
+    background-image: url(assets/common/corner.svg);
+    background-size: contain;
+    bottom: 8px;
+    right: calc(0.979 * var(--drawer-x));
+    transform: rotate(180deg);
   }
 }

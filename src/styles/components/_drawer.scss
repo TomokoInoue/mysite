@@ -10,7 +10,7 @@
   height: 100vh;
   padding: 0 2.29rem 0;
   background: $main-color;
-  color: $white;
+  color: $base-color;
   // 右に隠しておく
   transform: translateX(100%);
   transition: transform 0.35s ease;
@@ -40,7 +40,7 @@
     left: 50%;
     width: 2.8rem; // 線の長さ
     height: 1px; // 線の太さ
-    background: $white;
+    background: $base-color;
     transform-origin: center;
   }
   // 回転させて×にする
