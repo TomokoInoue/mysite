@@ -6,6 +6,9 @@
   position: fixed;
   left: 2.45rem;
   bottom: 1.93rem;
+  @include sp {
+    display: none;
+  }
   &__photo {
     display: block;
     width: 18.56rem;

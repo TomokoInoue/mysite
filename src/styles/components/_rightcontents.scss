@@ -4,6 +4,14 @@
 
 .right {
   margin: 14.25rem 3.6rem 0 auto;
+  // 1024pxのマージン
+  @include tablet {
+    max-width: calc(100% - 30.06rem);
+  }
+  @include sp {
+    max-width: none;
+    margin: 0 2.15rem;
+  }
   &__box {
     display: flex;
   }
@@ -12,6 +20,10 @@
     font-size: 3.5rem;
     font-weight: 200;
     letter-spacing: 0.175rem;
+    @include sp {
+      font-size: 2.85rem;
+      margin-bottom: 0.6rem !important;
+    }
     span {
       display: block;
       margin-bottom: -0.4rem;
@@ -30,6 +42,10 @@
   &__wrap {
     max-width: 37.18rem;
     margin-bottom: 12.5rem;
+    @include sp {
+      max-width: 100%;
+      margin-bottom: 7.29rem;
+    }
   }
   h2 {
     margin-bottom: 4rem;
@@ -42,12 +58,22 @@
     background-repeat: repeat-x;
     background-position: left top;
     background-size: auto;
+    @include sp {
+      margin-bottom: 2rem;
+      padding-top: 2.5rem;
+      // line-height: 2.3rem;
+      letter-spacing: 0.04rem;
+    }
   }
   &__txt {
     margin-bottom: 2.2rem;
     font-size: 1rem;
     line-height: 2.2rem; /* 228.571% */
     letter-spacing: 0.0175rem;
+    @include sp {
+      // line-height: 2rem;
+      letter-spacing: 0.045rem;
+    }
   }
   &__btn {
     display: block;
@@ -56,13 +82,6 @@
     height: 2.6rem;
     border-radius: 2.6rem;
     background-color: #e0ded7;
-  }
-}
-
-// 1024pxのマージン
-@include tablet {
-  .right {
-    max-width: calc(100% - 30.06rem);
   }
 }
 
@@ -96,3 +115,4 @@
     }
   }
 }
+

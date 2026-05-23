@@ -6,15 +6,25 @@
   display: flex;
   justify-content: space-between;
   margin: 1.88rem 2.25rem 0;
+  @include sp {
+    display: block;
+    margin: 1.35rem 2.15rem 6.5rem;
+    padding-bottom: 1.3rem;
+    border-bottom: 1px solid $main-color;
+    text-align: center;
+  }
   &__right {
     display: flex;
     justify-content: flex-end;
     position: fixed;
     right: 2.25rem;
     z-index: 10;
+    @include sp {
+      display: none;
+    }
   }
   h1 {
-    font-size: 1.375rem;
+    font-size: 1.37rem;
     font-family: $gothic;
     font-weight: 400;
     letter-spacing: 0.05rem;
@@ -24,6 +34,10 @@
       font-size: 1.25rem;
       font-weight: 400;
       font-family: $gothic;
+      @include sp {
+        margin-left: 0;
+        font-size: 1.12rem;
+      }
     }
   }
   .info {
