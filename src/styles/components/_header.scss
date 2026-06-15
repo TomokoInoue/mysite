@@ -5,13 +5,16 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin: 1.88rem 2.25rem 0;
+  margin: 0 2.25rem;
+  padding-top: 1.88rem;
+  transition: margin 300ms ease;
   @include sp {
     display: block;
-    margin: 1.35rem 2.15rem 6.5rem;
-    padding-bottom: 1.3rem;
-    border-bottom: 1px solid $main-color;
+    margin: 0 2.15rem;
+    padding: 1.75rem 0;
     text-align: center;
+    border-bottom: 1px solid rgba($color: $main-color, $alpha: 0.5);
+    transition: none;
   }
   &__right {
     display: flex;
@@ -21,6 +24,8 @@
     z-index: 10;
     @include sp {
       display: none;
+      position: static;
+      transition: none;
     }
   }
   h1 {
@@ -35,7 +40,7 @@
       font-weight: 400;
       font-family: $gothic;
       @include sp {
-        margin-left: 0;
+        margin: 0;
         font-size: 1.12rem;
       }
     }
@@ -46,11 +51,21 @@
       display: flex;
       position: relative;
       margin: 0.45rem 1.5rem 0 0;
+      @include sp {
+        color: $base-color;
+      }
       p {
         font-size: 0.8rem;
         font-family: $gothic;
         font-weight: 400;
         letter-spacing: 0.1rem;
+        @include sp {
+          font-size: 0.85rem;
+          font-weight: 500;
+          span {
+            font-weight: 500;
+          }
+        }
       }
     }
     &__time {
@@ -73,16 +88,23 @@
       margin: -0.2rem 0.75rem 0 0;
       border-left: 1px solid $main-color;
       vertical-align: middle;
+      @include sp {
+        border-left: 1px solid $base-color;
+      }
     }
   }
   .lang {
-    padding: 0.22rem 1rem 0.2rem;
+    padding: 0.22rem 0 0.2rem;
     border-radius: 1.28571rem;
     background: rgba(222, 220, 215, 0.5);
     backdrop-filter: blur(5px);
     font-size: 1.25rem;
     .langMenu {
       display: none;
+    }
+    &__btn,
+    .langMenu > li > button {
+      padding: 0 1rem;
     }
     /* JSで .lang に active が付いたら開く */
     &.active .langMenu {

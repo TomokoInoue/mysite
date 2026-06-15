@@ -1,79 +1,39 @@
 ---
-import { render } from 'astro:content';
-const { posts } = Astro.props;
-const post = posts[0];
-const { Content } = await render(post);
+import type { CollectionEntry } from 'astro:content';
+const { posts } = Astro.props as { posts: CollectionEntry<'posts'>[] };
 ---
 
 <article class="right">
- <section class="right__box">
-  <p class="right__ttl">
-   <span>{post.data.year}</span>{post.data.month}.{post.data.day}
-   <small class="langText" data-lang="ko">{post.data.weekKo}</small>
-   <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
-  </p>
-  <div class="right__wrap">
-   <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
-   <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
-   <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
-   <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
-   <!-- <button class="right__btn">&#x1f44f;</button> -->
+  <div class="right__date-sp">
+    <div class="right__date-year">{posts[0]?.data.year}</div>
+    <div class="right__date-number">{posts[0]?.data.month}.{posts[0]?.data.day}</div>
+    <div class="right__date-slot right__date-slot--week">
+      <div class="right__date-slot__rail">
+        {posts.map(post => <span>{post.data.weekKo}</span>)}
+      </div>
+    </div>
   </div>
- </section>
- <section class="right__box">
-  <p class="right__ttl">
-   <span>{post.data.year}</span>{post.data.month}.{post.data.day}
-   <small class="langText" data-lang="ko">{post.data.weekKo}</small>
-   <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
-  </p>
-  <div class="right__wrap">
-   <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
-   <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
-   <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
-   <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
-   <!-- <button class="right__btn">&#x1f44f;</button> -->
-  </div>
- </section>
- <section class="right__box">
-  <p class="right__ttl">
-   <span>{post.data.year}</span>{post.data.month}.{post.data.day}
-   <small class="langText" data-lang="ko">{post.data.weekKo}</small>
-   <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
-  </p>
-  <div class="right__wrap">
-   <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
-   <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
-   <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
-   <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
-   <!-- <button class="right__btn">&#x1f44f;</button> -->
-  </div>
- </section>
- <section class="right__box">
-  <p class="right__ttl">
-   <span>{post.data.year}</span>{post.data.month}.{post.data.day}
-   <small class="langText" data-lang="ko">{post.data.weekKo}</small>
-   <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
-  </p>
-  <div class="right__wrap">
-   <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
-   <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
-   <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
-   <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
-   <!-- <button class="right__btn">&#x1f44f;</button> -->
-  </div>
- </section>
- <section class="right__box">
-  <p class="right__ttl">
-   <span>{post.data.year}</span>{post.data.month}.{post.data.day}
-   <small class="langText" data-lang="ko">{post.data.weekKo}</small>
-   <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
-  </p>
-  <div class="right__wrap">
-   <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
-   <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
-   <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
-   <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
-   <!-- <button class="right__btn">&#x1f44f;</button> -->
-  </div>
- </section>
+
+  {posts.map((post) => (
+    <section
+      class="right__box"
+      data-year={post.data.year}
+      data-month={post.data.month}
+      data-day={post.data.day}
+      data-weekday={post.data.weekKo}
+    >
+      <p class="right__ttl">
+        <span>{post.data.year}</span>{post.data.month}.{post.data.day}
+        <small class="langText" data-lang="ko">{post.data.weekKo}</small>
+        <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
+      </p>
+      <div class="right__wrap">
+        <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
+        <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
+        <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
+        <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
+        <!-- <button class="right__btn">&#x1f44f;</button> -->
+      </div>
+    </section>
+  ))}
 </article>

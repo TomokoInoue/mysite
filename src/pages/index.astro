@@ -32,15 +32,14 @@ const firstPosts = posts.slice(0, 5);
 				</main>
 			</div>
 			<Drawer />
-			<div class="frame" aria-hidden="true">
-				<span class="cornerLeftTop"></span>
-				<span class="cornerRightTop"></span>
-				<span class="cornerLeftBottom"></span>
-				<span class="cornerRightBottom"></span>
-			</div>
+			<button class="menuBtn" data-menu-btn aria-expanded="false" aria-label="Open menu">
+			</button>
+			<div class="frame" aria-hidden="true"></div>
 		</div>
 		<script>
 			import "../scripts/menu.js";
+			import "../scripts/drawer.js";
+			import "../scripts/date-slot.js";
 			</script>
 	</body>
 </html>

@@ -8,14 +8,12 @@ function updateTime() {
   const now = new Date();
   const offset = 9; // 東京・釜山どちらもUTC+9
 
-  const localTime = new Date(
-    now.getTime() + now.getTimezoneOffset() * 60000 + offset * 3600000
-  );
+  const localTime = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + offset * 3600000);
 
   const hh = String(localTime.getHours()).padStart(2, '0');
   const mm = String(localTime.getMinutes()).padStart(2, '0');
 
-  const el = document.getElementById('time');
+  const el = document.querySelector('.info__clock');
   if (el) el.textContent = `${hh}:${mm}`;
 }
 
@@ -44,10 +42,7 @@ if (toggleBtn && langMenu) {
       const selectedLang = btn.dataset.lang;
       // テキストの切り替え
       langTexts.forEach((el) => {
-        el.classList.toggle(
-          'isHidden',
-          el.dataset.lang !== selectedLang
-        );
+        el.classList.toggle('isHidden', el.dataset.lang !== selectedLang);
       });
 
       // トグルボタン表示更新
@@ -67,31 +62,4 @@ if (toggleBtn && langMenu) {
       langMenu.parentElement.classList.remove('active');
     });
   });
-}
-
-/* --------------------------------
-   ハンバーガーメニューの開閉
---------------------------------- */
-const infoBtn = document.querySelector('[data-menu-btn]');
-const siteWrap = document.querySelector('[data-site]');
-const closeBtn = document.querySelector('[data-menu-close]');
-
-// 閉じる処理（共通関数）
-function closeDrawer() {
-  if (!siteWrap || !infoBtn) return;
-  siteWrap.classList.remove('isDrawerOpen');
-  infoBtn.setAttribute('aria-expanded', 'false');
-}
-
-// 開閉ボタン
-if (infoBtn && siteWrap) {
-  infoBtn.addEventListener('click', () => {
-    const isOpen = siteWrap.classList.toggle('isDrawerOpen');
-    infoBtn.setAttribute('aria-expanded', String(isOpen));
-  });
-}
-
-// ×ボタン
-if (closeBtn) {
-  closeBtn.addEventListener('click', closeDrawer);
 }
