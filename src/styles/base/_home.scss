@@ -4,30 +4,155 @@
 
 .wrapper {
   --drawer-w: 400px;
-  --drawer-x: 0px;  // Drawerが押し出す量
-  --follow-x: 0px;  // 追従（スクロール等）の量
+  --drawer-x: 0px; // Drawerが押し出す量（発火する際と「--drawer-w」を変数化して、管理しやすくする）
   position: relative;
-  overflow-x: hidden; // 左にズレた時の横スクロール防止
+  overflow-x: clip; // 左にズレた時の横スクロール防止（clipはスクロールコンテナを作らないのでposition:stickyが正常に動作する）
   background-color: $base-color;
   .contents {
     display: flex;
     justify-content: space-between;
-    margin-right: 0;
     transition: margin-right 0.35s ease;
-    margin: 0 2.25rem 0 0;
+    @include sp {
+      display: block;
+    }
   }
 }
 
 .pushable {
   transform: translateX(calc(-1 * var(--drawer-x)));
   transition: transform 0.35s ease;
-  will-change: transform;
+  @include sp {
+    transform: none;
+  }
 }
 
+// スマホ版のメニューボタン
+.menuBtn {
+  display: none;
+  @include sp {
+    display: block;
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    height: 2.75rem;
+    width: 4.5rem;
+    background-color: $main-color;
+    border-radius: 2.18rem;
+    z-index: 999;
+    cursor: pointer;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 1.5rem;
+      height: 1px;
+      background-color: $base-color;
+      transform: translateX(-50%);
+      transition: transform 0.35s ease;
+    }
+    &::before {
+      top: 42%;
+    }
+    &::after {
+      top: 57%;
+    }
+  }
+}
+
+// 追従フレーム（最前面）
+.frame {
+  width: 100vw;
+  --frame-border: 0rem solid #{$main-color};
+  position: fixed;
+  inset: 0; // top,right,bottom,leftを全て0にする。画面いっぱいに広げること（position: fixedとセットで使う）
+  border: var(--frame-border);
+  outline: var(--frame-border);
+  border-radius: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  transition:
+    opacity 200ms ease,
+    width 0.35s ease,
+    border-width 200ms ease,
+    border-radius 200ms ease;
+  @include sp {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------
 // メニュー開閉（.isDrawerOpenになったときにpushableをどうするか）
+// ---------------------------------------------------------
 .wrapper.isDrawerOpen {
   --drawer-x: var(--drawer-w);
+  @include sp {
+    width: 100%;
+    transition: 0.35s ease;
+  }
+  .header {
+    width: 100%;
+    margin-top: 1rem;
+    @include sp {
+      margin: 0 auto;
+      padding: 0;
+      h1 {
+        display: none;
+      }
+      &__right {
+        display: block;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: translateX(0);
+        z-index: 999;
+        right: 0;
+        .info {
+          margin: 1.87rem auto 0;
+          justify-content: center;
+          &__select {
+            margin-right: 4.2rem;
+          }
+          .lang {
+            background: $base-color;
+          }
+        }
+      }
+    }
+  }
   .drawer {
     transform: translateX(0);
+    @include sp {
+      opacity: 1;
+      border-radius: 0;
+    }
+  }
+  .frame {
+    --frame-border: 1px solid #{$main-color};
+    width: calc(100vw - var(--drawer-w) + 16px);
+    opacity: 1;
+    border-radius: 40px;
+    border-width: 16px;
+    outline: 1rem solid #{$main-color};
+    @include sp {
+      display: none;
+    }
+  }
+  .menuBtn {
+    @include sp {
+      background-color: $base-color;
+      &::before {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(25deg);
+        background-color: $main-color;
+      }
+      &::after {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-25deg);
+        background-color: $main-color;
+      }
+    }
   }
 }

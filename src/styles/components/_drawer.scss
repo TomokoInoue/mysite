@@ -2,7 +2,7 @@
 // about me
 // -----------------------------------------------
 .drawer {
-  z-index: 1000;
+  z-index: 100;
   position: fixed;
   top: 0;
   right: 0;
@@ -10,15 +10,34 @@
   height: 100vh;
   padding: 0 2.29rem 0;
   background: $main-color;
-  color: $white;
+  color: $base-color;
   // 右に隠しておく
   transform: translateX(100%);
   transition: transform 0.35s ease;
   // 中身が長いときスクロールできるように
   overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  @include sp {
+    opacity: 0;
+    padding: 0;
+    width: 100%;
+    border-radius: 1rem;
+    overscroll-behavior: auto;
+    transform: scale(0.95);
+    transition:
+      transform translateX(0),
+      opacity 0.2s ease,
+      border-radius 0.2s ease,
+      transform 0.2s ease;
+  }
   &__inner {
     width: 19.21rem;
     margin: 0 auto 5.37rem;
+    @include sp {
+      width: 19.68rem;
+      margin: 0 auto 8rem;
+    }
   }
 
   // ハンバーガーメニュー閉じる
@@ -30,6 +49,9 @@
     height: 2.5rem;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent; // タップハイライト消し（iOS）
+    @include sp {
+      display: none;
+    }
   }
   // 2本線で×ボタンを作る
   &__close::before,
@@ -40,7 +62,7 @@
     left: 50%;
     width: 2.8rem; // 線の長さ
     height: 1px; // 線の太さ
-    background: $white;
+    background: $base-color;
     transform-origin: center;
   }
   // 回転させて×にする
@@ -54,26 +76,40 @@
 .drawer svg {
   color: #fff;
 }
+// data属性を取得して、cssスタイルを切り替える
 [data-site].isDrawerOpen .nav {
-  opacity: 0;
-  pointer-events: none;
+  display: none;
 }
 
 .profile {
   margin: 8.75rem auto 0;
+  @include sp {
+    margin-top: 10.5rem;
+  }
   p {
     font-family: $gothic;
     font-size: 0.875rem;
     line-height: 190%; /* 1.575rem */
+    letter-spacing: 0.05rem;
+    @include sp {
+      font-size: 0.95rem;
+      line-height: 1.875rem; /* 187.5% */
+    }
   }
   &__img {
     display: block;
     width: 8.57rem;
     margin: 0 auto;
+    @include sp {
+      width: 9.37rem;
+    }
   }
   &__name {
     margin: 0.7rem 0 2.86rem;
     text-align: center;
+    @include sp {
+      font-size: 1rem !important;
+    }
   }
 }
 
@@ -83,9 +119,17 @@
   margin: 1.8rem 0 2.8rem;
   padding-bottom: 3rem;
   border-bottom: 1px solid #516162;
+  @include sp {
+    margin: 2.8rem 0 4.5rem;
+    gap: 1.54rem;
+  }
   li {
     width: 1.06rem;
     height: 1.06rem;
+    @include sp {
+      width: 1.15rem;
+      height: auto;
+    }
   }
   a {
     display: grid;
@@ -105,6 +149,10 @@
   &__ttl {
     margin-bottom: 1.75rem;
     font-size: 0.875rem;
+    @include sp {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
   }
   &__list {
     display: flex;
@@ -128,16 +176,27 @@
     flex: 0 0 auto; // 折り返さない
     width: 6.25rem;
     scroll-snap-align: start; // 左端で止まる
+    @include sp {
+      width: 7.5rem;
+    }
   }
   &__name {
     margin-top: 0.6rem;
     font-size: 0.75rem;
     letter-spacing: 0.015rem;
+    @include sp {
+      font-size: 0.87rem;
+      font-weight: 500;
+    }
     span {
       display: block;
       margin-top: 0.2rem;
       font-size: 0.68rem;
       opacity: 0.5;
+      @include sp {
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
     }
   }
 }

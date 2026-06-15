@@ -2,55 +2,236 @@
 // Right Contents
 // -----------------------------------------------
 
+@keyframes rDateSlideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes rDateSlideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .right {
   margin: 14.25rem 3.6rem 0 auto;
+  // 1024pxのマージン
+  @include tablet {
+    max-width: calc(100% - 30.06rem);
+  }
+  @include sp {
+    max-width: none;
+    margin: 4.82rem 2.15rem;
+  }
   &__box {
     display: flex;
   }
-  &__ttl {
-    margin: -1.8rem 4.94rem 0 0;
-    font-size: 3.5rem;
-    font-weight: 200;
-    letter-spacing: 0.175rem;
-    span {
-      display: block;
-      margin-bottom: -0.4rem;
-      font-family: 'Satoshi Variable';
-      font-size: 0.75rem;
-      letter-spacing: 0.0375rem;
+  // SP専用: スロットアニメーション付き固定日付エリア
+  &__date-sp {
+    display: none;
+    @include sp {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      font-size: 2.85rem;
+      font-weight: 200;
+      letter-spacing: 0.175rem;
+      line-height: 1;
+      padding: 1.5rem 0 1.25rem;
+      background-color: $base-color;
+      background-image: url(../assets/common/border.svg);
+      background-repeat: repeat-x;
+      background-position: left bottom;
+      background-size: auto;
+      box-shadow: 0 1.5rem 2.5rem #eceae4;
+      touch-action: pan-y;
+      * {
+        touch-action: pan-y;
+      }
     }
-    small {
+  }
+  // 年スライド
+  &__date-year {
+    overflow: hidden;
+    height: 1em;
+    position: relative;
+    font-family: 'Satoshi Variable';
+    font-size: 0.75rem;
+    letter-spacing: 0.038rem;
+    margin-bottom: -0.3rem;
+    @include sp {
       display: block;
+      width: 100%;
+      margin-bottom: 0.2rem;
+    }
+  }
+  &__year-inner {
+    display: block;
+    height: 1em;
+    line-height: 1;
+    &.out {
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: rDateSlideOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    &.in {
+      animation: rDateSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  }
+  // 日付スライド
+  &__date-number {
+    overflow: hidden;
+    height: 1em;
+    position: relative;
+    font-weight: 200;
+  }
+  &__date-row {
+    display: flex;
+    align-items: baseline;
+    height: 1em;
+    line-height: 1;
+    white-space: nowrap;
+    letter-spacing: 0;
+    gap: 0.175rem;
+    &.out {
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: rDateSlideOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    &.in {
+      animation: rDateSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  }
+  &__digit-wrap {
+    display: inline-block;
+    overflow: hidden;
+    height: 1em;
+    position: relative;
+    vertical-align: top;
+  }
+  &__digit-inner {
+    display: block;
+    height: 1em;
+    line-height: 1;
+    @include sp {
+      font-weight: 200;
+    }
+    &.out {
+      animation: rDateSlideOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    &.in {
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: rDateSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  }
+  // 曜日スロット（レール方式）
+  &__date-slot {
+    overflow: hidden;
+    height: 1em;
+    @include sp {
+      margin: 0 0 0.2rem auto;
+    }
+    &__rail {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      span {
+        display: block;
+        height: 1em;
+        line-height: 1;
+      }
+    }
+    &--week {
       margin-top: -0.2rem;
-      font-size: 1rem;
+      font-size: 1.12rem;
       font-weight: 400;
       letter-spacing: 0.025rem;
     }
   }
+  &__ttl {
+    margin: -2.1rem 4.94rem 0 0;
+    font-size: 3.5rem;
+    font-weight: 200;
+    letter-spacing: 0.175rem;
+    @include sp {
+      display: none;
+    }
+    span {
+      display: block;
+      font-family: 'Satoshi Variable';
+      font-size: 0.75rem;
+      letter-spacing: 0.038rem;
+      @include sp {
+        font-size: 0.75rem;
+        margin-bottom: -0.3rem;
+      }
+    }
+    small {
+      display: block;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.025rem;
+      @include sp {
+        font-size: 1.12rem;
+      }
+    }
+    .langText {
+      @include sp {
+        margin-bottom: 1rem;
+      }
+    }
+  }
   &__wrap {
     max-width: 37.18rem;
+    margin-bottom: 12.5rem;
+    @include sp {
+      max-width: 100%;
+      margin-bottom: 7.29rem;
+    }
   }
   h2 {
     margin-bottom: 4rem;
-    padding-top: 2.3rem;
+    padding-top: 2.8rem;
     font-size: 1.5rem;
-    font-weight: 250;
+    font-weight: 200;
     line-height: 2.5rem; /* 166.667% */
     letter-spacing: 0.03rem;
     background-image: url(../assets/common/border.svg);
     background-repeat: repeat-x;
     background-position: left top;
     background-size: auto;
+    @include sp {
+      margin-bottom: 2rem;
+      padding-top: 2.5rem;
+      letter-spacing: 0.04rem;
+      line-height: 2.375rem; /* 158.333% */
+    }
   }
   &__txt {
     margin-bottom: 2.2rem;
     font-size: 1rem;
     line-height: 2.2rem; /* 228.571% */
     letter-spacing: 0.0175rem;
+    @include sp {
+      letter-spacing: 0.045rem;
+      line-height: 2rem;
+    }
   }
   &__btn {
     display: block;
-    margin: 0 0 12.5rem auto;
     width: 2.6rem;
     height: 2.6rem;
     border-radius: 2.6rem;
@@ -58,10 +239,9 @@
   }
 }
 
-// 1024pxのマージン
-@include tablet {
-  .right {
-    max-width: calc(100% - 30.06rem);
+@include sp {
+  article.right > section:first-of-type .right__wrap h2 {
+    background: none;
   }
 }
 
@@ -72,12 +252,13 @@
       display: inline;
     }
     &__ttl {
-      position: relative;
-      margin: 0 0 2rem 0;
+      position: sticky;
+      margin: 0 0 1.25rem 0;
+      z-index: 999;
       small {
         position: absolute;
         right: 0;
-        bottom: 0.65rem;
+        bottom: 0.6rem;
       }
     }
   }

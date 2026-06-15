@@ -6,6 +6,15 @@ import RightContent from '../components/RightContent.astro';
 import Drawer from '../components/Drawer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import '../styles/style.scss';
+
+import { getCollection } from 'astro:content';
+const posts = await getCollection('posts');
+// 新しい順
+posts.sort((a, b) => 
+  b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+// 最初の5件だけ
+const firstPosts = posts.slice(0, 5);
 ---
 
 <!doctype html>
@@ -19,13 +28,18 @@ import '../styles/style.scss';
 			<LeftContent />
 			<div class="stage pushable">
 				<main class="contents">
-					<RightContent />
+					<RightContent posts={firstPosts} />
 				</main>
 			</div>
 			<Drawer />
+			<button class="menuBtn" data-menu-btn aria-expanded="false" aria-label="Open menu">
+			</button>
+			<div class="frame" aria-hidden="true"></div>
 		</div>
 		<script>
 			import "../scripts/menu.js";
+			import "../scripts/drawer.js";
+			import "../scripts/date-slot.js";
 			</script>
 	</body>
 </html>
