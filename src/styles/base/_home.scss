@@ -95,38 +95,16 @@
   .header {
     width: 100%;
     margin-top: 1rem;
-    @include sp {
-      margin: 0 auto;
-      padding: 0;
-      h1 {
-        display: none;
-      }
-      &__right {
-        display: block;
-        position: relative;
-        top: 0;
-        left: 0;
-        transform: translateX(0);
-        z-index: 999;
-        right: 0;
-        .info {
-          margin: 1.87rem auto 0;
-          justify-content: center;
-          &__select {
-            margin-right: 4.2rem;
-          }
-          .lang {
-            background: $base-color;
-          }
-        }
-      }
-    }
   }
   .drawer {
     transform: translateX(0);
     @include sp {
       opacity: 1;
       border-radius: 0;
+      transition:
+        opacity 0.2s ease,
+        border-radius 0.2s ease,
+        transform 0.2s ease;
     }
   }
   .frame {

@@ -48,3 +48,15 @@ infoBtns.forEach((btn) => {
 if (closeBtn) {
   closeBtn.addEventListener('click', closeDrawer);
 }
+
+const mq = window.matchMedia('(max-width: 768px)');
+mq.addEventListener('change', () => {
+  if (siteWrap) {
+    siteWrap.classList.add('is-resizing');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        siteWrap.classList.remove('is-resizing');
+      });
+    });
+  }
+});
