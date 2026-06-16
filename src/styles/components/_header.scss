@@ -2,6 +2,74 @@
 // header
 // -----------------------------------------------
 
+.info {
+  display: flex;
+  &__select {
+    display: flex;
+    position: relative;
+    margin: 0.45rem 1.5rem 0 0;
+    @include sp {
+      color: $base-color;
+    }
+    p {
+      font-size: 0.8rem;
+      font-family: $gothic;
+      font-weight: 400;
+      letter-spacing: 0.1rem;
+      @include sp {
+        font-size: 0.85rem;
+        font-weight: 500;
+        span {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  &__time {
+    margin-right: 0.75rem;
+  }
+  &__temp {
+    margin-right: 0.5rem;
+  }
+  &__weather {
+    margin-top: -0.35rem;
+  }
+  &__city {
+    padding-left: 0.75rem;
+  }
+  &__city::before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 0.75rem;
+    margin: -0.2rem 0.75rem 0 0;
+    border-left: 1px solid $main-color;
+    vertical-align: middle;
+    @include sp {
+      border-left: 1px solid $base-color;
+    }
+  }
+}
+
+.lang {
+  padding: 0.22rem 0 0.2rem;
+  border-radius: 1.28571rem;
+  background: rgba(222, 220, 215, 0.5);
+  backdrop-filter: blur(5px);
+  font-size: 1.25rem;
+  .langMenu {
+    display: none;
+  }
+  &__btn,
+  .langMenu > li > button {
+    padding: 0 1rem;
+  }
+  /* JSで .lang に active が付いたら開く */
+  &.active .langMenu {
+    display: block;
+  }
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -43,83 +111,6 @@
         margin: 0;
         font-size: 1.12rem;
       }
-    }
-  }
-  .info {
-    display: flex;
-    &__select {
-      display: flex;
-      position: relative;
-      margin: 0.45rem 1.5rem 0 0;
-      @include sp {
-        color: $base-color;
-      }
-      p {
-        font-size: 0.8rem;
-        font-family: $gothic;
-        font-weight: 400;
-        letter-spacing: 0.1rem;
-        @include sp {
-          font-size: 0.85rem;
-          font-weight: 500;
-          span {
-            font-weight: 500;
-          }
-        }
-      }
-    }
-    &__time {
-      margin-right: 0.75rem;
-    }
-    &__temp {
-      margin-right: 0.5rem;
-    }
-    &__weather {
-      margin-top: -0.35rem;
-    }
-    &__city {
-      padding-left: 0.75rem;
-    }
-    &__city::before {
-      content: '';
-      display: inline-block;
-      width: 1px;
-      height: 0.75rem;
-      margin: -0.2rem 0.75rem 0 0;
-      border-left: 1px solid $main-color;
-      vertical-align: middle;
-      @include sp {
-        border-left: 1px solid $base-color;
-      }
-    }
-  }
-  .lang {
-    padding: 0.22rem 0 0.2rem;
-    border-radius: 1.28571rem;
-    background: rgba(222, 220, 215, 0.5);
-    backdrop-filter: blur(5px);
-    font-size: 1.25rem;
-    .langMenu {
-      display: none;
-    }
-    &__btn,
-    .langMenu > li > button {
-      padding: 0 1rem;
-    }
-    /* JSで .lang に active が付いたら開く */
-    &.active .langMenu {
-      display: block;
-    }
-    i {
-      display: block;
-      position: absolute;
-      top: 1.18rem;
-      right: 0.5rem;
-      width: 10px;
-      height: 6px;
-      background-image: url(../assets/common/icon_arrow.svg);
-      background-size: contain;
-      transform: translate(-50%, -50%);
     }
   }
   .nav {

@@ -1,6 +1,10 @@
 // -----------------------------------------------
 // about me
 // -----------------------------------------------
+.is-resizing .drawer {
+  transition: none !important;
+}
+
 .drawer {
   z-index: 100;
   position: fixed;
@@ -22,21 +26,40 @@
     opacity: 0;
     padding: 0;
     width: 100%;
-    border-radius: 1rem;
+    border-radius: 2rem;
     overscroll-behavior: auto;
-    transform: scale(0.95);
-    transition:
-      transform translateX(0),
-      opacity 0.2s ease,
-      border-radius 0.2s ease,
-      transform 0.2s ease;
+    transform: translateX(0) scale(0.95);
+    transition: transform 0.35s ease;
   }
   &__inner {
     width: 19.21rem;
     margin: 0 auto 5.37rem;
     @include sp {
-      width: 19.68rem;
-      margin: 0 auto 8rem;
+      width: auto;
+      margin: 0 2.5rem 8rem;
+    }
+  }
+
+  // drawerのinfoはSPのみ表示・上部に固定
+  .info {
+    display: none;
+    @include sp {
+      display: flex;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: 1;
+      background: none;
+      padding: 1.87rem 2rem 1rem;
+      justify-content: center;
+      transform: translate(-50%, 0);
+      .info__select {
+        margin-right: auto;
+      }
+      .lang {
+        background: $base-color;
+      }
     }
   }
 
@@ -75,10 +98,6 @@
 }
 .drawer svg {
   color: #fff;
-}
-// data属性を取得して、cssスタイルを切り替える
-[data-site].isDrawerOpen .nav {
-  display: none;
 }
 
 .profile {

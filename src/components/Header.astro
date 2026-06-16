@@ -1,26 +1,11 @@
 ---
-
+import Info from './Info.astro';
 ---
 
 <header class="header">
 	<h1 class="pushable">Jung Tomoko<span>（人生珍道中ブログ）</span></h1>
 	<div class="header__right pushable">
-		<div class="info">
-			<div class="info__select">
-				<p class="info__time"><span class="info__clock">--:--</span></p>
-				<p class="info__temp">12°C</p>
-				<p class="info__weather emoji">&#x2614;</p>
-				<p class="info__city langText" data-lang="ko">BUSAN</p>
-				<p class="info__city langText isHidden" data-lang="ja">TOKYO</p>
-			</div>
-			<div class="lang">
-				<button class="lang__btn langToggle" data-current="ko">&#x1f1f0;&#x1f1f7;</button>
-				<ul class="lang__list langMenu">
-					<li><button data-lang="ko" class="isHidden">&#x1f1f0;&#x1f1f7;</button></li>
-					<li><button data-lang="ja" class="">&#127471;&#127477;</button></li>
-				</ul>
-			</div>
-		</div>
+		<Info />
 		<nav class="nav">
 			<button type="button" class="nav__btn" data-menu-btn aria-expanded="false">
     <span class="nav__text langText" data-lang="ko">나</span>

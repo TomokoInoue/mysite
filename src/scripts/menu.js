@@ -13,8 +13,9 @@ function updateTime() {
   const hh = String(localTime.getHours()).padStart(2, '0');
   const mm = String(localTime.getMinutes()).padStart(2, '0');
 
-  const el = document.querySelector('.info__clock');
-  if (el) el.textContent = `${hh}:${mm}`;
+  document.querySelectorAll('.info__clock').forEach(el => {
+    el.textContent = `${hh}:${mm}`;
+  });
 }
 
 updateTime();
@@ -23,43 +24,40 @@ setInterval(updateTime, 1000);
 /* --------------------------
    言語切り替え
 --------------------------- */
-const toggleBtn = document.querySelector('.langToggle');
-const langMenu = document.querySelector('.langMenu');
+const toggleBtns = document.querySelectorAll('.langToggle');
+const langMenus = document.querySelectorAll('.langMenu');
 const langTexts = document.querySelectorAll('.langText');
 
-if (toggleBtn && langMenu) {
-  const jaBtn = langMenu.querySelector('button[data-lang="ja"]');
-  const koBtn = langMenu.querySelector('button[data-lang="ko"]');
-
-  // 言語メニューの開閉
-  toggleBtn.addEventListener('click', () => {
-    langMenu.parentElement.classList.toggle('active');
+// 言語メニューの開閉（クリックしたボタンの親 .lang のみ開閉）
+toggleBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.lang').classList.toggle('active');
   });
+});
 
-  // 言語選択
-  langMenu.querySelectorAll('button').forEach((btn) => {
+// 言語選択（どのメニューからでも全体に反映）
+langMenus.forEach(menu => {
+  menu.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', () => {
       const selectedLang = btn.dataset.lang;
+
       // テキストの切り替え
-      langTexts.forEach((el) => {
+      langTexts.forEach(el => {
         el.classList.toggle('isHidden', el.dataset.lang !== selectedLang);
       });
 
-      // トグルボタン表示更新
-      toggleBtn.textContent = btn.textContent;
-      toggleBtn.dataset.current = selectedLang;
+      // 全トグルボタンの表示を更新
+      toggleBtns.forEach(toggle => {
+        toggle.textContent = btn.textContent;
+        toggle.dataset.current = selectedLang;
+      });
 
-      // 選択中言語ボタンを隠す
-      if (selectedLang === 'ja') {
-        jaBtn?.classList.add('isHidden');
-        koBtn?.classList.remove('isHidden');
-      } else {
-        jaBtn?.classList.remove('isHidden');
-        koBtn?.classList.add('isHidden');
-      }
-
-      // メニューを閉じる
-      langMenu.parentElement.classList.remove('active');
+      // 全メニューの選択中言語ボタンを隠す・メニューを閉じる
+      langMenus.forEach(m => {
+        m.querySelector('button[data-lang="ja"]')?.classList.toggle('isHidden', selectedLang === 'ja');
+        m.querySelector('button[data-lang="ko"]')?.classList.toggle('isHidden', selectedLang === 'ko');
+        m.parentElement.classList.remove('active');
+      });
     });
   });
-}
+});
