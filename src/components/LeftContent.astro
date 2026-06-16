@@ -1,13 +1,27 @@
 ---
 const homeUrl = import.meta.env.BASE_URL
+
+const photos = [
+ 'todays_photo01.jpg',
+ 'todays_photo02.jpg',
+ 'todays_photo03.jpg',
+ 'todays_photo04.jpg',
+ 'todays_photo05.jpg',
+ 'todays_photo06.jpg',
+]
 ---
 
 <div class="left pushable">
  <picture class="left__photo">
-  <img src={`${homeUrl}assets/photos/todays_photo01.jpg`} alt="today's photos" width="297" height="223">
+  <img id="todays-photo" src={`${homeUrl}assets/photos/todays_photo01.jpg`} alt="today's photos" width="297" height="223">
  </picture>
  <div class="left__phrase">
   <p class="left__phrase-txt langText" data-lang="ko">배운 문구 :<span>안녕히 계세요.</span></p>
   <p class="left__phrase-txt langText isHidden" data-lang="ja">覚えた言葉 :<span>안녕히 계세요.</span></p>
  </div>
 </div>
+<script define:vars={{ photos, homeUrl }}>
+ const random = Math.floor(Math.random() * photos.length)
+ const img = document.getElementById('todays-photo')
+ img.src = homeUrl + 'assets/photos/' + photos[random]
+</script>
