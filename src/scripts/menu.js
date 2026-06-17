@@ -13,7 +13,7 @@ function updateTime() {
   const hh = String(localTime.getHours()).padStart(2, '0');
   const mm = String(localTime.getMinutes()).padStart(2, '0');
 
-  document.querySelectorAll('.info__clock').forEach(el => {
+  document.querySelectorAll('.info__clock').forEach((el) => {
     el.textContent = `${hh}:${mm}`;
   });
 }
@@ -29,31 +29,34 @@ const langMenus = document.querySelectorAll('.langMenu');
 const langTexts = document.querySelectorAll('.langText');
 
 // 言語メニューの開閉（クリックしたボタンの親 .lang のみ開閉）
-toggleBtns.forEach(btn => {
+toggleBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     btn.closest('.lang').classList.toggle('active');
   });
 });
 
 // 言語選択（どのメニューからでも全体に反映）
-langMenus.forEach(menu => {
-  menu.querySelectorAll('button').forEach(btn => {
+langMenus.forEach((menu) => {
+  menu.querySelectorAll('button').forEach((btn) => {
     btn.addEventListener('click', () => {
       const selectedLang = btn.dataset.lang;
 
       // テキストの切り替え
-      langTexts.forEach(el => {
+      langTexts.forEach((el) => {
         el.classList.toggle('isHidden', el.dataset.lang !== selectedLang);
       });
 
+      // 言語変更イベントを発火
+      document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: selectedLang } }));
+
       // 全トグルボタンの表示を更新
-      toggleBtns.forEach(toggle => {
+      toggleBtns.forEach((toggle) => {
         toggle.textContent = btn.textContent;
         toggle.dataset.current = selectedLang;
       });
 
       // 全メニューの選択中言語ボタンを隠す・メニューを閉じる
-      langMenus.forEach(m => {
+      langMenus.forEach((m) => {
         m.querySelector('button[data-lang="ja"]')?.classList.toggle('isHidden', selectedLang === 'ja');
         m.querySelector('button[data-lang="ko"]')?.classList.toggle('isHidden', selectedLang === 'ko');
         m.parentElement.classList.remove('active');
