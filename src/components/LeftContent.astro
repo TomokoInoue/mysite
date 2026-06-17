@@ -13,6 +13,7 @@ const photos = [
  'todays_photo09.jpg',
  'todays_photo10.jpg',
 ]
+
 ---
 
 <div class="left pushable">
@@ -20,9 +21,12 @@ const photos = [
   <img id="todays-photo" src={`${homeUrl}assets/photos/todays_photo01.jpg`} alt="today's photos" width="297" height="223">
  </picture>
  <div class="left__phrase">
-  <p class="left__phrase-txt langText" data-lang="ko">배운 문구 :<span>안녕히 계세요.</span></p>
-  <p class="left__phrase-txt langText isHidden" data-lang="ja">覚えた言葉 :<span>안녕히 계세요.</span></p>
- </div>
+  <p class="left__phrase-txt">
+    <span class="langText" data-lang="ko">배운 문구 :</span>
+    <span class="langText isHidden" data-lang="ja">覚えた言葉 :</span>
+    <span class="js-phrase-text"></span><span class="left__cursor">|</span>
+  </p>
+</div>
 </div>
 <script define:vars={{ photos, homeUrl }}>
  const random = Math.floor(Math.random() * photos.length)

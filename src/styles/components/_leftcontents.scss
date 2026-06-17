@@ -19,11 +19,15 @@
     padding-bottom: 0.7rem;
     border-bottom: 1px solid $main-color;
   }
+  &__cursor {
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 0.7s step-end infinite;
+  }
   &__phrase-txt {
     font-size: 0.875rem;
     letter-spacing: 0.0175rem;
     span {
-      padding-left: 0.63rem;
       letter-spacing: 0.05rem;
     }
   }
@@ -38,5 +42,11 @@
     &__phrase-txt {
       font-size: clamp(0.875rem, 0.732rem + 0.3vw, 1rem);
     }
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
