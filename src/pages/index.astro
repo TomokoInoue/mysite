@@ -13,8 +13,6 @@ const posts = await getCollection('posts');
 posts.sort((a, b) => 
   b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
-// 最初の5件だけ
-const firstPosts = posts.slice(0, 5);
 ---
 
 <!doctype html>
@@ -28,7 +26,7 @@ const firstPosts = posts.slice(0, 5);
 			<LeftContent />
 			<div class="stage pushable">
 				<main class="contents">
-					<RightContent posts={firstPosts} />
+					<RightContent posts={posts} />
 				</main>
 			</div>
 			<Drawer />
