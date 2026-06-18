@@ -29,7 +29,10 @@
     border-radius: 2rem;
     overscroll-behavior: auto;
     transform: translateX(0) scale(0.95);
-    transition: transform 0.35s ease;
+    transition:
+      transform 0.25s ease,
+      border-radius 0.25s ease,
+      opacity 0.25s ease;
   }
   &__inner {
     width: 19.21rem;
@@ -128,6 +131,20 @@
     text-align: center;
     @include sp {
       font-size: 1rem !important;
+    }
+  }
+  &__work {
+    display: inline-block;
+    margin: 1.25rem 0 0.85rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid $base-color;
+  }
+  &__note {
+    font-size: 0.75rem !important;
+    line-height: 1.2rem !important;
+    opacity: 0.5;
+    @include sp {
+      font-size: 0.85rem !important;
     }
   }
 }
