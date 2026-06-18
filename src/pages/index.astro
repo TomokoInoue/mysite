@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import LeftContent from '../components/LeftContent.astro';
 import RightContent from '../components/RightContent.astro';
 import Drawer from '../components/Drawer.astro';
+import Loading from '../components/Loading.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import '../styles/style.scss';
 
@@ -21,6 +22,7 @@ posts.sort((a, b) =>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
+		<Loading />
 		<div class="wrapper" data-site>
 			<Header />
 			<LeftContent />

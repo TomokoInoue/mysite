@@ -1,0 +1,47 @@
+// -----------------------------------------------
+// loading
+// -----------------------------------------------
+
+@keyframes loadingTextAnim {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes loadingFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.loading {
+  display: none; // JSで表示制御
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: $base-color;
+  align-items: center;
+  justify-content: center;
+  animation: loadingFadeOut 1s ease 3s forwards;
+
+  &__text {
+    font-family: $gothic;
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: $main-color;
+    animation: loadingTextAnim 3s ease 0.3s both;
+  }
+}
