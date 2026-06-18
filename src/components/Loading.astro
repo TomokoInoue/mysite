@@ -1,0 +1,29 @@
+---
+---
+
+<div class="loading" id="js-loading">
+  <p class="loading__text">The best is yet to come!</p>
+</div>
+
+<script is:inline>
+  (function () {
+    const today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
+    const key = 'loadingShownDate';
+    if (localStorage.getItem(key) !== today) {
+      localStorage.setItem(key, today);
+      const el = document.getElementById('js-loading');
+      if (el) el.style.display = 'flex';
+    }
+  })();
+</script>
+
+<script>
+  const el = document.getElementById('js-loading');
+  if (el && el.style.display === 'flex') {
+    el.addEventListener('animationend', (e) => {
+      if (e.animationName === 'loadingFadeOut') {
+        el.remove();
+      }
+    });
+  }
+</script>
