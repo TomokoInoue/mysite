@@ -101,6 +101,7 @@
     @include sp {
       opacity: 1;
       border-radius: 0;
+      pointer-events: auto;
       transition:
         opacity 0.25s ease,
         border-radius 0.25s ease,
