@@ -4,14 +4,13 @@ import Header from '../components/Header.astro';
 import LeftContent from '../components/LeftContent.astro';
 import RightContent from '../components/RightContent.astro';
 import Drawer from '../components/Drawer.astro';
-import Loading from '../components/Loading.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import '../styles/style.scss';
 
 import { getCollection } from 'astro:content';
 const posts = await getCollection('posts');
 // 新しい順
-posts.sort((a, b) => 
+posts.sort((a, b) =>
   b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
 ---
@@ -22,7 +21,9 @@ posts.sort((a, b) =>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<Loading />
+		<div class="loading" id="js-loading">
+  	<p class="loading__text">The best is yet to come!</p>
+		</div>
 		<div class="wrapper" data-site>
 			<Header />
 			<LeftContent />
@@ -37,11 +38,11 @@ posts.sort((a, b) =>
 			<div class="frame" aria-hidden="true"></div>
 		</div>
 		<script>
+			import "../scripts/main.js";
 			import "../scripts/menu.js";
-			import "../scripts/drawer.js";
 			import "../scripts/date-slot.js";
 			import "../scripts/phrase-loop.js";
 			import "../scripts/weather.js";
-			</script>
+		</script>
 	</body>
 </html>

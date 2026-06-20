@@ -8,9 +8,7 @@ const { posts } = Astro.props as { posts: CollectionEntry<'posts'>[] };
     <div class="right__date-year">{posts[0]?.data.year}</div>
     <div class="right__date-number">{posts[0]?.data.month}.{posts[0]?.data.day}</div>
     <div class="right__date-slot right__date-slot--week">
-      <div class="right__date-slot__rail">
-        {posts.map(post => <span>{post.data.weekKo}</span>)}
-      </div>
+      <span class="right__week-inner">{posts[0]?.data.weekKo}</span>
     </div>
   </div>
 

@@ -29,6 +29,7 @@
     border-radius: 2rem;
     overscroll-behavior: auto;
     transform: translateX(0) scale(0.95);
+    pointer-events: none;
     transition:
       transform 0.25s ease,
       border-radius 0.25s ease,
@@ -233,6 +234,16 @@
         font-size: 0.75rem;
         font-weight: 500;
       }
+    }
+  }
+}
+
+// SP版の日本語表記だけフォントサイズを小さく調整
+@include sp {
+  .profile {
+    &__txt[data-lang='ja'] {
+      font-size: 0.925rem;
+      line-height: 1.8rem;
     }
   }
 }

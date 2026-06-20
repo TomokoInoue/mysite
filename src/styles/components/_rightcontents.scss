@@ -66,14 +66,14 @@
     overflow: hidden;
     height: 1em;
     position: relative;
-    font-family: 'Satoshi Variable';
+    font-family: 'Satoshi';
     font-size: 0.75rem;
     letter-spacing: 0.038rem;
     margin-bottom: -0.3rem;
     @include sp {
       display: block;
       width: 100%;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
     }
   }
   &__year-inner {
@@ -139,28 +139,33 @@
       animation: rDateSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
   }
-  // 曜日スロット（レール方式）
+  // 曜日スロット
   &__date-slot {
     overflow: hidden;
     height: 1em;
+    position: relative;
     @include sp {
       margin: 0 0 0.2rem auto;
-    }
-    &__rail {
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-      span {
-        display: block;
-        height: 1em;
-        line-height: 1;
-      }
     }
     &--week {
       margin-top: -0.2rem;
       font-size: 1.12rem;
       font-weight: 400;
       letter-spacing: 0.025rem;
+    }
+  }
+  &__week-inner {
+    display: block;
+    height: 1em;
+    line-height: 1;
+    &.out {
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: rDateSlideOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    &.in {
+      animation: rDateSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
   }
   &__ttl {
@@ -173,7 +178,7 @@
     }
     span {
       display: block;
-      font-family: 'Satoshi Variable';
+      font-family: 'Satoshi';
       font-size: 0.75rem;
       letter-spacing: 0.038rem;
       @include sp {
@@ -275,6 +280,21 @@
     }
     &__wrap {
       max-width: 47rem;
+    }
+  }
+}
+
+// SP版の日本語表記だけフォントサイズを小さく調整
+@include sp {
+  .right {
+    .right__wrap {
+      h2[data-lang='ja'] {
+        font-size: 1.4rem;
+        line-height: 2.25rem;
+      }
+    }
+    &__txt {
+      line-height: 1.95rem;
     }
   }
 }

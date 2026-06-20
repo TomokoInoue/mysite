@@ -1,6 +1,8 @@
 'use strict';
 
-const mq = window.matchMedia('(max-width: 768px)');
+import { BREAKPOINT_SP } from './constants.js';
+
+const mq = window.matchMedia(`(max-width: ${BREAKPOINT_SP}px)`);
 
 function createDateRow(dateStr) {
   const row = document.createElement('div');
@@ -79,23 +81,22 @@ function animateDate(fromStr, toStr, container) {
   }
 }
 
-function animateYear(fromYear, toYear, container) {
-  if (fromYear === toYear) return;
+function animateSlot(from, to, container, innerClass) {
+  if (from === to) return;
 
-  // 進行中のアニメーションを収束
-  container.querySelectorAll('.right__year-inner.out').forEach(el => el.remove());
-  const pendingIn = container.querySelector('.right__year-inner.in');
+  container.querySelectorAll(`.${innerClass}.out`).forEach(el => el.remove());
+  const pendingIn = container.querySelector(`.${innerClass}.in`);
   if (pendingIn) pendingIn.classList.remove('in');
 
-  const oldInner = container.querySelector('.right__year-inner');
+  const oldInner = container.querySelector(`.${innerClass}`);
   if (oldInner) {
     oldInner.classList.add('out');
     oldInner.addEventListener('animationend', () => oldInner.remove(), { once: true });
   }
 
   const newInner = document.createElement('span');
-  newInner.className = 'right__year-inner in'; // DOMに追加する前にクラスを設定
-  newInner.textContent = toYear;
+  newInner.className = `${innerClass} in`;
+  newInner.textContent = to;
   container.appendChild(newInner);
   newInner.addEventListener('animationend', () => newInner.classList.remove('in'), { once: true });
 }
@@ -106,12 +107,13 @@ function initDateSlot() {
 
   const yearContainer = document.querySelector('.right__date-year');
   const dateContainer = document.querySelector('.right__date-number');
-  const weekRail = document.querySelector('.right__date-slot--week .right__date-slot__rail');
-  if (!yearContainer || !dateContainer || !weekRail) return;
+  const weekContainer = document.querySelector('.right__date-slot--week');
+  if (!yearContainer || !dateContainer || !weekContainer) return;
 
   const firstSection = sections[0];
   const initYear = firstSection.dataset.year;
   const initDateStr = `${firstSection.dataset.month}.${firstSection.dataset.day}`;
+  const initWeek = firstSection.dataset.weekday;
 
   yearContainer.innerHTML = '';
   const yearInner = document.createElement('span');
@@ -122,8 +124,15 @@ function initDateSlot() {
   dateContainer.innerHTML = '';
   dateContainer.appendChild(createDateRow(initDateStr));
 
+  weekContainer.innerHTML = '';
+  const weekInner = document.createElement('span');
+  weekInner.className = 'right__week-inner';
+  weekInner.textContent = initWeek;
+  weekContainer.appendChild(weekInner);
+
   let currentDateStr = initDateStr;
   let currentYear = initYear;
+  let currentWeek = initWeek;
   let currentIndex = -1;
 
   function slideTo(index) {
@@ -134,15 +143,17 @@ function initDateSlot() {
     const section = sections[index];
     const dateStr = `${section.dataset.month}.${section.dataset.day}`;
     const year = section.dataset.year;
+    const week = section.dataset.weekday;
 
     if (!isFirst) {
       animateDate(currentDateStr, dateStr, dateContainer);
-      animateYear(currentYear, year, yearContainer);
+      animateSlot(currentYear, year, yearContainer, 'right__year-inner');
+      animateSlot(currentWeek, week, weekContainer, 'right__week-inner');
     }
 
     currentDateStr = dateStr;
     currentYear = year;
-    weekRail.style.transform = `translateY(-${index}em)`;
+    currentWeek = week;
   }
 
   const stickyEl = document.querySelector('.right__date-sp');
