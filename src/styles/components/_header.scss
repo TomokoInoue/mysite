@@ -79,7 +79,7 @@
   @include sp {
     display: block;
     margin: 0 2.15rem;
-    padding: 1.75rem 0;
+    padding: calc(1.75rem + env(safe-area-inset-top)) 0 1.75rem;
     text-align: center;
     border-bottom: 1px solid rgba($color: $main-color, $alpha: 0.5);
     transition: none;
