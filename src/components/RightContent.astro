@@ -22,14 +22,14 @@ const { posts } = Astro.props as { posts: CollectionEntry<'posts'>[] };
     >
       <p class="right__ttl">
         <span>{post.data.year}</span>{post.data.month}.{post.data.day}
-        <small class="langText" data-lang="ko">{post.data.weekKo}</small>
-        <small class="langText isHidden" data-lang="ja">{post.data.weekJa}</small>
+        <small class="langText" data-lang="ja">{post.data.weekJa}</small>
+        <small class="langText isHidden" data-lang="ko">{post.data.weekKo}</small>
       </p>
       <div class="right__wrap">
-        <h2 class="langText" data-lang="ko">{post.data.titleKo}</h2>
-        <h2 class="langText isHidden" data-lang="ja">{post.data.titleJa}</h2>
-        <p class="right__txt langText" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
-        <p class="right__txt langText isHidden" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
+        <h2 class="langText" data-lang="ja">{post.data.titleJa}</h2>
+        <h2 class="langText isHidden" data-lang="ko">{post.data.titleKo}</h2>
+        <p class="right__txt langText" data-lang="ja" style="white-space: pre-line;">{post.data.articleJa}</p>
+        <p class="right__txt langText isHidden" data-lang="ko" style="white-space: pre-line;">{post.data.articleKo}</p>
         <!-- <button class="right__btn">&#x1f44f;</button> -->
       </div>
     </section>
