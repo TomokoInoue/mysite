@@ -131,7 +131,3 @@ picture.cover {
     pointer-events: none;
   }
 }
-
-body:has([data-site].isDrawerOpen) .status-bar-cover {
-  background-color: $main-color;
-}
