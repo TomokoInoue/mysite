@@ -8,7 +8,8 @@ const { posts } = Astro.props as { posts: CollectionEntry<'posts'>[] };
     <div class="right__date-year">{posts[0]?.data.year}</div>
     <div class="right__date-number">{posts[0]?.data.month}.{posts[0]?.data.day}</div>
     <div class="right__date-slot right__date-slot--week">
-      <span class="right__week-inner">{posts[0]?.data.weekKo}</span>
+      <span class="right__week-inner langText" data-lang="ja">{posts[0]?.data.weekJa}</span>
+      <span class="right__week-inner langText isHidden" data-lang="ko">{posts[0]?.data.weekKo}</span>
     </div>
   </div>
 
@@ -18,7 +19,8 @@ const { posts } = Astro.props as { posts: CollectionEntry<'posts'>[] };
       data-year={post.data.year}
       data-month={post.data.month}
       data-day={post.data.day}
-      data-weekday={post.data.weekKo}
+      data-weekday-ja={post.data.weekJa}
+      data-weekday-ko={post.data.weekKo}
     >
       <p class="right__ttl">
         <span>{post.data.year}</span>{post.data.month}.{post.data.day}
