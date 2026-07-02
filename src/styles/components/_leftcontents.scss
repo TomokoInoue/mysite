@@ -16,6 +16,9 @@
     margin-bottom: 3.2rem;
   }
   &__phrase {
+    width: 18.56rem;
+    overflow: hidden;
+    white-space: nowrap;
     padding-bottom: 0.7rem;
     border-bottom: 1px solid $main-color;
   }
@@ -25,6 +28,9 @@
     animation: blink 0.7s step-end infinite;
   }
   &__phrase-txt {
+    width: 18.56rem;
+    overflow: hidden;
+    white-space: nowrap;
     font-size: 0.875rem;
     letter-spacing: 0.0175rem;
     span {
